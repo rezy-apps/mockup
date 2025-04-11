@@ -15,42 +15,63 @@
     .overlay {
       background-color: rgba(47, 122, 62, 0.85);
       min-height: 100vh;
-      padding: 30px 20px;
+      padding: 0 16px 24px;
       color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .content {
+      width: 100%;
+      max-width: 400px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .top-section {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
     }
 
     .date {
-      font-size: 16px;
+      font-size: 14px;
       margin-bottom: 10px;
     }
 
     .greeting {
-      font-size: 28px;
+      font-size: 22px;
       font-style: italic;
       font-weight: 300;
+      margin-bottom: 4px;
     }
 
     .name {
-      font-size: 32px;
+      font-size: 24px;
       font-weight: bold;
     }
 
     .card {
       background-color: white;
-      border-radius: 25px;
-      padding: 24px 16px;
-      margin-top: 40px;
+      border-radius: 20px;
+      padding: 20px 16px;
       color: #2f7a3e;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-bottom: 16px;
     }
 
     .card button {
       width: 100%;
-      padding: 14px;
-      font-size: 18px;
-      margin-bottom: 16px;
+      padding: 12px;
+      font-size: 16px;
+      margin-bottom: 14px;
       border: 2px solid #2f7a3e;
-      border-radius: 12px;
+      border-radius: 10px;
       background: white;
       color: #2f7a3e;
       font-weight: bold;
@@ -72,18 +93,29 @@
     .card .primary:hover {
       background-color: #2f7a3e;
     }
+
+    hr {
+      margin: 12px 0;
+      border: none;
+      border-top: 1px solid #ccc;
+    }
   </style>
 </head>
 <body>
   <div class="overlay">
-    <div class="date">Kamis, 5 September 2024</div>
-    <div class="greeting"><span style="font-style:italic;">Selamat pagi,</span> <span class="name">Asep Abdul Somad Maul...</span></div>
+    <div class="content">
+      <div class="top-section">
+        <div class="date">Kamis, 5 September 2024</div>
+        <div class="greeting">Selamat pagi,</div>
+        <div class="name">Asep Abdul Somad Maul...</div>
+      </div>
 
-    <div class="card">
-      <button>Keluar</button>
-      <button>Ganti Akun</button>
-      <hr style="margin: 16px 0;">
-      <button class="primary">Pilih Layanan</button>
+      <div class="card">
+        <button>Keluar</button>
+        <button>Ganti Akun</button>
+        <hr>
+        <button class="primary">Pilih Layanan</button>
+      </div>
     </div>
   </div>
 </body>
