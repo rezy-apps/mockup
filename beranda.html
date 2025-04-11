@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Beranda</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('https://res.cloudinary.com/djznrjvy6/image/upload/v1744353196/logo_rezycology_yfmydk.png') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .overlay {
+      background-color: rgba(47, 122, 62, 0.85);
+      min-height: 100vh;
+      padding: 30px 20px;
+      color: white;
+    }
+
+    .date {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .greeting {
+      font-size: 28px;
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .name {
+      font-size: 32px;
+      font-weight: bold;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 25px;
+      padding: 24px 16px;
+      margin-top: 40px;
+      color: #2f7a3e;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .card button {
+      width: 100%;
+      padding: 14px;
+      font-size: 18px;
+      margin-bottom: 16px;
+      border: 2px solid #2f7a3e;
+      border-radius: 12px;
+      background: white;
+      color: #2f7a3e;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .card button:hover {
+      background-color: #2f7a3e;
+      color: white;
+    }
+
+    .card .primary {
+      background-color: #3e833f;
+      color: white;
+      border: none;
+    }
+
+    .card .primary:hover {
+      background-color: #2f7a3e;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <div class="date">Kamis, 5 September 2024</div>
+    <div class="greeting"><span style="font-style:italic;">Selamat pagi,</span> <span class="name">Asep Abdul Somad Maul...</span></div>
+
+    <div class="card">
+      <button>Keluar</button>
+      <button>Ganti Akun</button>
+      <hr style="margin: 16px 0;">
+      <button class="primary">Pilih Layanan</button>
+    </div>
+  </div>
+</body>
+</html>
