@@ -9,6 +9,11 @@
       margin: 0;
       font-family: Arial, sans-serif;
       background-color: #f9f9f9;
+      animation: fadeIn 0.8s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
     .header {
       background-color: #2f7a3e;
@@ -17,50 +22,75 @@
       padding: 40px 20px;
       border-bottom-left-radius: 40px;
       border-bottom-right-radius: 40px;
+      animation: slideDown 1s ease-out;
+    }
+    @keyframes slideDown {
+      from { transform: translateY(-40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
     .header img {
       width: 100px;
       height: auto;
       margin: 20px 0;
+      animation: fadeIn 1.5s ease-in;
     }
     .version {
       font-size: 0.9em;
     }
     .container {
-      max-width: 400px;
+      max-width: 360px;
+      width: 90%;
       margin: -40px auto 0;
       background: white;
-      padding: 40px 20px;
+      padding: 32px 20px;
       border-radius: 20px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      animation: fadeInUp 1s ease-out;
+    }
+    @keyframes fadeInUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
     label {
       display: block;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
       font-weight: bold;
+      font-size: 14px;
     }
     input[type="text"], input[type="password"] {
       width: 100%;
-      padding: 12px;
-      margin-bottom: 20px;
+      padding: 12px 14px;
+      margin-bottom: 18px;
       border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 16px;
+      border-radius: 10px;
+      font-size: 15px;
+      box-sizing: border-box;
+      transition: border 0.3s;
+    }
+    input[type="text"]:focus, input[type="password"]:focus {
+      border-color: #3e833f;
+      outline: none;
     }
     button {
       width: 100%;
       padding: 14px;
       background-color: #3e833f;
       color: white;
-      font-size: 18px;
+      font-size: 17px;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    button:hover {
+      background-color: #356c35;
+      transform: scale(1.02);
     }
     .register {
       text-align: center;
       margin-top: 20px;
       font-size: 14px;
+      animation: fadeIn 1.2s ease-in;
     }
     .register a {
       color: #2f7a3e;
@@ -73,7 +103,7 @@
 
   <div class="header">
     <h2>Aplikasi Pencatatan</h2>
-    <img src="logo.png" alt="Rezycology Logo">
+    <img src="https://res.cloudinary.com/djznrjvy6/image/upload/v1744353196/logo_rezycology_yfmydk.png" alt="Rezycology Logo">
     <div class="version">Versi 1.1.1</div>
   </div>
 
@@ -81,13 +111,13 @@
     <form>
       <label for="entitas">Nama Entitas</label>
       <input type="text" id="entitas" placeholder="Enter Input">
-      
+
       <label for="username">Nama Pengguna</label>
       <input type="text" id="username" placeholder="Enter Input">
-      
+
       <label for="password">Nama Sandi</label>
       <input type="password" id="password" placeholder="Enter Input">
-      
+
       <button type="submit">Masuk</button>
     </form>
 
