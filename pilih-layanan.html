@@ -5,10 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pilih Layanan</title>
   <style>
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background-color: #f9faf9;
+      animation: fadeInUp 0.5s ease;
     }
 
     .header-top {
@@ -17,6 +29,7 @@
       display: flex;
       align-items: center;
       cursor: pointer;
+      animation: fadeInUp 0.6s ease forwards;
     }
 
     .header-top svg {
@@ -29,6 +42,7 @@
       font-size: 22px;
       font-weight: bold;
       padding: 16px;
+      animation: fadeInUp 0.7s ease forwards;
     }
 
     .menu {
@@ -45,6 +59,15 @@
       background-color: white;
       cursor: pointer;
       transition: transform 0.2s ease;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .menu-item:nth-child(2) {
+      animation-delay: 0.9s;
+    }
+
+    .menu-item:nth-child(3) {
+      animation-delay: 1s;
     }
 
     .menu-item:hover {
@@ -56,6 +79,14 @@
       border-radius: 50%;
       padding: 10px;
       margin-right: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .menu-icon img {
+      width: 32px;
+      height: 32px;
     }
 
     .menu-text {
@@ -79,21 +110,21 @@
   <div class="menu">
     <div class="menu-item">
       <div class="menu-icon">
-        ⚙️
+        <img src="https://res.cloudinary.com/djznrjvy6/image/upload/v1744358238/icon-operasional_cergmh.png" alt="Operasional" />
       </div>
       <div class="menu-text">Operasional</div>
     </div>
 
     <div class="menu-item">
       <div class="menu-icon">
-        📊
+        <img src="https://res.cloudinary.com/djznrjvy6/image/upload/v1744358237/icon-dashboard_jpyhc9.png" alt="Dasbor" />
       </div>
       <div class="menu-text">Dasbor</div>
     </div>
 
     <div class="menu-item">
       <div class="menu-icon">
-        🛠️
+        <img src="https://res.cloudinary.com/djznrjvy6/image/upload/v1744358237/icon-pengaturan_qqu5mm.png" alt="Pengaturan" />
       </div>
       <div class="menu-text">Pengaturan</div>
     </div>
