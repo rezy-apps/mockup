@@ -1,10 +1,100 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>Halo Dunia!</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aplikasi Pencatatan</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+    }
+    .header {
+      background-color: #2f7a3e;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+    }
+    .header img {
+      width: 100px;
+      height: auto;
+      margin: 20px 0;
+    }
+    .version {
+      font-size: 0.9em;
+    }
+    .container {
+      max-width: 400px;
+      margin: -40px auto 0;
+      background: white;
+      padding: 40px 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 14px;
+      background-color: #3e833f;
+      color: white;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .register {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+    .register a {
+      color: #2f7a3e;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-  <h1>Halo, ini website pertamaku!</h1>
-  <p>Dibuat pakai GitHub Pages 🚀</p>
+
+  <div class="header">
+    <h2>Aplikasi Pencatatan</h2>
+    <img src="logo.png" alt="Rezycology Logo">
+    <div class="version">Versi 1.1.1</div>
+  </div>
+
+  <div class="container">
+    <form>
+      <label for="entitas">Nama Entitas</label>
+      <input type="text" id="entitas" placeholder="Enter Input">
+      
+      <label for="username">Nama Pengguna</label>
+      <input type="text" id="username" placeholder="Enter Input">
+      
+      <label for="password">Nama Sandi</label>
+      <input type="password" id="password" placeholder="Enter Input">
+      
+      <button type="submit">Masuk</button>
+    </form>
+
+    <div class="register">
+      Belum punya akun? <a href="#">Tekan di sini</a>
+    </div>
+  </div>
+
 </body>
 </html>
