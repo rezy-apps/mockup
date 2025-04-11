@@ -26,6 +26,7 @@
       justify-content: center;
       padding: 0 16px 4px;
       color: white;
+      animation: fadeIn 1s ease-in-out;
     }
 
     .content {
@@ -35,7 +36,8 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transform: translateY(-10%);
+      padding-bottom: 48px;
+      animation: slideUp 1.2s ease;
     }
 
     .top-section {
@@ -44,23 +46,24 @@
       justify-content: center;
       text-align: left;
       flex-grow: 1;
-      padding-bottom: 2px;
+      padding: 60px 0 24px;
+      animation: fadeIn 1.5s ease;
     }
 
     .date {
-      font-size: 14px;
-      margin-bottom: 6px;
+      font-size: 18px;
+      margin-bottom: 10px;
     }
 
     .greeting {
-      font-size: 20px;
+      font-size: 26px;
       font-style: italic;
       font-weight: 300;
-      margin-bottom: 1px;
+      margin-bottom: 6px;
     }
 
     .name {
-      font-size: 22px;
+      font-size: 28px;
       font-weight: bold;
     }
 
@@ -70,6 +73,7 @@
       padding: 12px 12px;
       color: #2f7a3e;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      animation: slideUp 1.4s ease;
     }
 
     .card button {
@@ -105,6 +109,16 @@
       margin: 6px 0;
       border: none;
       border-top: 1px solid #ccc;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
   </style>
 </head>
