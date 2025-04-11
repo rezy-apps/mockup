@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pilih Layanan</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f9faf9;
+    }
+
+    .header-top {
+      background-color: #d3decf;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .header-top svg {
+      margin-right: 10px;
+    }
+
+    .header-title {
+      background-color: #1f2c26;
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      padding: 16px;
+    }
+
+    .menu {
+      padding: 20px;
+    }
+
+    .menu-item {
+      display: flex;
+      align-items: center;
+      border: 2px solid #2f7a3e;
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 16px;
+      background-color: white;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-2px);
+    }
+
+    .menu-icon {
+      background-color: #e8efe8;
+      border-radius: 50%;
+      padding: 10px;
+      margin-right: 16px;
+    }
+
+    .menu-text {
+      font-size: 18px;
+      font-weight: bold;
+      color: #2f7a3e;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header-top" onclick="goBack()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#2f7a3e" viewBox="0 0 24 24">
+      <path d="M15 6l-6 6 6 6"/>
+    </svg>
+    <div style="font-size: 18px; color: #2f7a3e; font-weight: bold;">Kembali</div>
+  </div>
+
+  <div class="header-title">Pilih Layanan</div>
+
+  <div class="menu">
+    <div class="menu-item">
+      <div class="menu-icon">
+        ⚙️
+      </div>
+      <div class="menu-text">Operasional</div>
+    </div>
+
+    <div class="menu-item">
+      <div class="menu-icon">
+        📊
+      </div>
+      <div class="menu-text">Dasbor</div>
+    </div>
+
+    <div class="menu-item">
+      <div class="menu-icon">
+        🛠️
+      </div>
+      <div class="menu-text">Pengaturan</div>
+    </div>
+  </div>
+
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+
+</body>
+</html>
