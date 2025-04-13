@@ -2,113 +2,22 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Beranda</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    html, body {
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    html, body {
       height: 100%;
-      font-family: Arial, sans-serif;
-    }
-
-    body {
-      background: url('https://res.cloudinary.com/djznrjvy6/image/upload/v1744353196/logo_rezycology_yfmydk.png') no-repeat center center fixed;
-      background-size: cover;
-    }
-
-    .overlay {
-      background-color: rgba(47, 122, 62, 0.85);
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 0 16px 4px;
-      color: white;
-      animation: fadeIn 1s ease-in-out forwards;
-    }
-
-    .content {
-      width: 100%;
-      max-width: 400px;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding-bottom: 48px;
-      animation: slideUp 1.2s ease forwards;
-    }
-
-    .top-section {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: left;
-      flex-grow: 1;
-      padding: 60px 0 24px;
-      animation: fadeIn 1.5s ease forwards;
-    }
-
-    .date {
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-
-    .greeting {
-      font-size: 26px;
-      font-style: italic;
-      font-weight: 300;
-      margin-bottom: 6px;
-    }
-
-    .name {
-      font-size: 28px;
-      font-weight: bold;
-    }
-
-    .card {
-      background-color: white;
-      border-radius: 20px;
-      padding: 12px 12px;
-      color: #2f7a3e;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      animation: slideUp 1.4s ease forwards;
-    }
-
-    .card button {
-      width: 100%;
-      padding: 10px;
-      font-size: 15px;
-      margin-bottom: 8px;
-      border: 2px solid #2f7a3e;
-      border-radius: 10px;
-      background: white;
-      color: #2f7a3e;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s, color 0.3s;
-    }
-
-    .card button:hover {
-      background-color: #2f7a3e;
-      color: white;
-    }
-
-    .card .primary {
-      background-color: #3e833f;
-      color: white;
-      border: none;
-    }
-
-    .card .primary:hover {
-      background-color: #2f7a3e;
-    }
-
-    hr {
-      margin: 6px 0;
-      border: none;
-      border-top: 1px solid #ccc;
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f8f6;
+      color: #333;
+      animation: fadeIn 1s ease-in;
     }
 
     @keyframes fadeIn {
@@ -116,28 +25,113 @@
       to { opacity: 1; }
     }
 
-    @keyframes slideUp {
-      from { transform: translateY(30px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+    .header {
+      position: relative;
+      background-color: #2f7a3e;
+      color: white;
+      text-align: left;
+      padding: 40px 24px 120px;
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: url('https://res.cloudinary.com/djznrjvy6/image/upload/v1744550306/pexels-sarah-chai-7262471_1_wfmuoh.png');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.3;
+      z-index: 0;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .tanggal {
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .sapaan {
+      font-size: 22px;
+      font-weight: 400;
+    }
+
+    .sapaan span {
+      font-weight: 600;
+    }
+
+    .container {
+      max-width: 400px;
+      width: 90%;
+      margin: -80px auto 0;
+      background: white;
+      padding: 32px 20px;
+      border-radius: 28px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+      z-index: 10;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .btn {
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-outline {
+      background: white;
+      border: 1.5px solid #2f7a3e;
+      color: #2f7a3e;
+    }
+
+    .btn-outline:hover {
+      background: #e5f3e5;
+    }
+
+    .btn-primary {
+      background: #3e833f;
+      color: white;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background: #2f7a3e;
+    }
+
+    .divider {
+      height: 1px;
+      background-color: #e0e0e0;
+      margin: 10px 0;
     }
   </style>
 </head>
 <body>
-  <div class="overlay">
-    <div class="content">
-      <div class="top-section">
-        <div class="date">Kamis, 5 September 2024</div>
-        <div class="greeting">Selamat pagi,</div>
-        <div class="name">Asep Abdul Somad Maul...</div>
-      </div>
-
-      <div class="card">
-        <button>Keluar</button>
-        <button>Ganti Akun</button>
-        <hr>
-        <button class="primary">Pilih Layanan</button>
+  <div class="header">
+    <div class="header-content">
+      <div class="tanggal">Kamis, 5 September 2024</div>
+      <div class="sapaan">
+        Selamat pagi, <span>Asep Abdul Somad Maul...</span>
       </div>
     </div>
+  </div>
+
+  <div class="container">
+    <button class="btn btn-outline">Keluar</button>
+    <button class="btn btn-outline">Ganti Akun</button>
+    <div class="divider"></div>
+    <button class="btn btn-primary">Pilih Layanan</button>
   </div>
 </body>
 </html>
