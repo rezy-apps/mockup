@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Beranda</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
-    * {
+    *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -30,7 +31,7 @@
       background-color: #2f7a3e;
       color: white;
       text-align: left;
-      padding: 40px 24px 120px;
+      padding: 108px 24px 324px;
       border-bottom-left-radius: 40px;
       border-bottom-right-radius: 40px;
       overflow: hidden;
@@ -39,37 +40,47 @@
     .header::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
+      inset: 0;
       background-image: url('https://res.cloudinary.com/djznrjvy6/image/upload/v1744550306/pexels-sarah-chai-7262471_1_wfmuoh.png');
       background-size: cover;
       background-position: center;
       opacity: 0.3;
       z-index: 0;
+      pointer-events: none;
     }
 
     .header-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      height: 100%;
       position: relative;
       z-index: 1;
+      transform: translateY(50%);
     }
 
     .tanggal {
       font-size: 14px;
       margin-bottom: 8px;
+      color: white;
     }
 
     .sapaan {
-      font-size: 22px;
+      font-size: 24px;
       font-weight: 400;
+      line-height: 1.4;
+      color: white;
     }
 
-    .sapaan span {
+    .sapaan span.nama {
       font-weight: 600;
     }
 
     .container {
-      max-width: 400px;
+      max-width: 420px;
       width: 90%;
-      margin: -80px auto 0;
+      margin: -100px auto 0;
       background: white;
       padding: 32px 20px;
       border-radius: 28px;
@@ -87,7 +98,7 @@
       font-size: 16px;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.2s ease-in-out;
     }
 
     .btn-outline {
@@ -118,20 +129,44 @@
   </style>
 </head>
 <body>
-  <div class="header">
-    <div class="header-content">
-      <div class="tanggal">Kamis, 5 September 2024</div>
-      <div class="sapaan">
-        Selamat pagi, <span>Asep Abdul Somad Maul...</span>
-      </div>
-    </div>
-  </div>
 
-  <div class="container">
+  <!-- Header Section -->
+  <header class="header">
+    <div class="header-content">
+      <div class="tanggal" id="tanggal"></div>
+      <div class="sapaan" id="sapaanText"></div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="container">
     <button class="btn btn-outline">Keluar</button>
     <button class="btn btn-outline">Ganti Akun</button>
     <div class="divider"></div>
     <button class="btn btn-primary">Pilih Layanan</button>
-  </div>
+  </main>
+
+  <script>
+    const tanggalElement = document.getElementById('tanggal');
+    const sapaanTextElement = document.getElementById('sapaanText');
+
+    const now = new Date();
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    tanggalElement.textContent = now.toLocaleDateString('id-ID', options);
+
+    const jam = now.getHours();
+    let sapaan = 'pagi';
+    if (jam >= 11 && jam < 15) {
+      sapaan = 'siang';
+    } else if (jam >= 15 && jam < 18) {
+      sapaan = 'sore';
+    } else if (jam >= 18 || jam < 4) {
+      sapaan = 'malam';
+    }
+
+    const isItalic = sapaan === 'malam';
+    const formattedSapaan = isItalic ? `<i>Selamat ${sapaan}</i>` : `<i>Selamat ${sapaan}</i>`;
+    sapaanTextElement.innerHTML = `${formattedSapaan}, <span class="nama">Asep Abdul Somad Maul...</span>`;
+  </script>
 </body>
 </html>
