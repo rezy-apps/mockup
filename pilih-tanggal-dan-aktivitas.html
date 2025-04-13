@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pilih Tanggal dan Aktivitas</title>
+  <title>Pilih Tanggal dan aktivitas</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     * {
@@ -223,7 +223,12 @@
     function simpanTanggal() {
       const tanggal = document.getElementById('tanggalPicker').value;
       if (tanggal) {
-        document.getElementById('tanggalStatus').innerText = tanggal;
+        const [yyyy, mm, dd] = tanggal.split("-");
+        const formatted = `${dd}-${mm}-${yyyy}`;
+        const statusEl = document.getElementById('tanggalStatus');
+        statusEl.innerText = formatted;
+        statusEl.style.color = '#1f3b2c';
+        statusEl.style.fontWeight = '600';
       }
       document.getElementById('tanggalModal').style.display = 'none';
     }
