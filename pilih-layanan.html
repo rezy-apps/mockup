@@ -4,145 +4,134 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pilih Layanan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
   <style>
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f9faf9;
-      animation: fadeIn 0.6s ease forwards;
-      animation-fill-mode: both;
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f8f6;
+      color: #1f3b2c;
+      animation: fadeIn 0.8s ease-in;
     }
 
-    .header-top {
-      background-color: #d3decf;
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .top-bar {
+      background-color: #cedace;
       padding: 16px;
       display: flex;
       align-items: center;
+      font-size: 16px;
+      font-weight: 600;
+      color: #264d33;
       cursor: pointer;
-      animation: fadeIn 0.6s ease forwards;
-      animation-delay: 0.2s;
-      animation-fill-mode: both;
     }
 
-    .header-top svg {
+    .top-bar:hover {
+      background-color: #b6c8b6;
+    }
+
+    .top-bar svg {
+      width: 20px;
+      height: 20px;
       margin-right: 10px;
+      stroke: #264d33;
     }
 
-    .header-title {
-      background-color: #1f2c26;
+    .section-title {
+      background-color: #1f2d26;
       color: white;
-      font-size: 22px;
-      font-weight: bold;
-      padding: 16px;
-      animation: fadeIn 0.6s ease forwards;
-      animation-delay: 0.4s;
-      animation-fill-mode: both;
+      font-weight: 600;
+      padding: 12px 16px;
+      font-size: 16px;
     }
 
-    .menu {
-      padding: 20px;
-    }
-
-    .menu-item {
+    .container {
+      padding: 24px 16px;
       display: flex;
-      align-items: center;
-      border: 2px solid #2f7a3e;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .menu-card {
+      background-color: white;
+      border: 1.5px solid #3e833f;
       border-radius: 10px;
       padding: 16px;
-      margin-bottom: 16px;
-      background-color: white;
-      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 16px;
       transition: transform 0.2s ease;
-      animation: fadeIn 0.6s ease forwards;
-      animation-fill-mode: both;
     }
 
-    .menu-item:nth-child(1) {
-      animation-delay: 0.6s;
-    }
-
-    .menu-item:nth-child(2) {
-      animation-delay: 0.8s;
-    }
-
-    .menu-item:nth-child(3) {
-      animation-delay: 1s;
-    }
-
-    .menu-item:hover {
+    .menu-card:hover {
       transform: translateY(-2px);
+      cursor: pointer;
     }
 
     .menu-icon {
-      background-color: #e8efe8;
-      border-radius: 50%;
-      padding: 10px;
-      margin-right: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
     .menu-icon img {
-      width: 32px;
-      height: 32px;
+      width: 63px;
+      height: 63px;
     }
 
-    .menu-text {
-      font-size: 18px;
-      font-weight: bold;
+    .menu-label {
+      font-weight: 600;
+      font-size: 16px;
       color: #2f7a3e;
+    }
+
+    @media (max-width: 480px) {
+      .menu-label {
+        font-size: 15px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="header-top" onclick="goBack()">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#2f7a3e" viewBox="0 0 24 24">
-      <path d="M15 6l-6 6 6 6"/>
-    </svg>
-    <div style="font-size: 18px; color: #2f7a3e; font-weight: bold;">Kembali</div>
+  <div class="top-bar" onclick="window.history.back()">
+    <svg fill="none" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+    Kembali
   </div>
 
-  <div class="header-title">Pilih Layanan</div>
+  <div class="section-title">Pilih Layanan</div>
 
-  <div class="menu">
-    <div class="menu-item">
+  <div class="container">
+    <div class="menu-card">
       <div class="menu-icon">
-        <img src="https://res.cloudinary.com/djznrjvy6/image/upload/v1744358238/icon-operasional_cergmh.png" alt="Operasional" />
+        <img src="https://res.cloudinary.com/djznrjvy6/image/upload/v1744358238/icon-operasional_cergmh.png" alt="Operasional">
       </div>
-      <div class="menu-text">Operasional</div>
+      <div class="menu-label">Operasional</div>
     </div>
 
-    <div class="menu-item">
+    <div class="menu-card">
       <div class="menu-icon">
-        <img src="https://res.cloudinary.com/djznrjvy6/image/upload/v1744358237/icon-dashboard_jpyhc9.png" alt="Dasbor" />
+        <img src="https://res.cloudinary.com/djznrjvy6/image/upload/v1744358237/icon-dashboard_jpyhc9.png" alt="Dasbor">
       </div>
-      <div class="menu-text">Dasbor</div>
+      <div class="menu-label">Dasbor</div>
     </div>
 
-    <div class="menu-item">
+    <div class="menu-card">
       <div class="menu-icon">
-        <img src="https://res.cloudinary.com/djznrjvy6/image/upload/v1744358237/icon-pengaturan_qqu5mm.png" alt="Pengaturan" />
+        <img src="https://res.cloudinary.com/djznrjvy6/image/upload/v1744358237/icon-pengaturan_qqu5mm.png" alt="Pengaturan">
       </div>
-      <div class="menu-text">Pengaturan</div>
+      <div class="menu-label">Pengaturan</div>
     </div>
   </div>
-
-  <script>
-    function goBack() {
-      window.history.back();
-    }
-  </script>
 
 </body>
 </html>
