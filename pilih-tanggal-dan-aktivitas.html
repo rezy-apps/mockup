@@ -226,7 +226,6 @@
     const tanggal = params.get('tgl');
     const statusEl = document.getElementById('tanggalStatus').textContent = tanggal || 'Belum dipilih';
     if (statusEl.textContent != 'Belum dipilih') {
-      statusEl.innerText = formatted;
       statusEl.style.color = '#1f3b2c';
       statusEl.style.fontWeight = '600';
     }
