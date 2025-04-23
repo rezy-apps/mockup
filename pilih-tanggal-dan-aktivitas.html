@@ -245,7 +245,7 @@
     function simpanTanggal() {
       const tanggal = document.getElementById('tanggalPicker').value;
       if (tanggal) {
-        const [yyyy, mm, dd] = tanggal.split("-");
+        const [yyyy, mmm, dd] = tanggal.split("-");
         const formatted = `${dd}-${mmm}-${yyyy}`;
         const statusEl = document.getElementById('tanggalStatus');
         statusEl.innerText = formatted;
