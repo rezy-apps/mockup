@@ -224,11 +224,18 @@
   <script>
     const params = new URLSearchParams(window.location.search);
     const tanggal = params.get('tgl');
-    const statusEl = document.getElementById('tanggalStatus');
-    statusEl.textContent = tanggal || 'Belum dipilih';
-    if (statusEl.textContent != 'Belum dipilih') {
-      statusEl.style.color = '#1f3b2c';
-      statusEl.style.fontWeight = '600';
+    const aktivitas = params.get('aktv');
+    const statusEl_1 = document.getElementById('tanggalStatus');
+    const statusEl_2 = document.getElementById('aktivitasStatus');
+    statusEl_1.textContent = tanggal || 'Belum dipilih';
+    statusEl_2.textContent = aktivitas || 'Belum dipilih';
+    if (statusEl_1.textContent != 'Belum dipilih') {
+      statusEl_1.style.color = '#1f3b2c';
+      statusEl_1.style.fontWeight = '600';
+    }
+    if (statusEl_2.textContent != 'Belum dipilih') {
+      statusEl_2.style.color = '#1f3b2c';
+      statusEl_2.style.fontWeight = '600';
     }
     
     function bukaPopupTanggal() {
@@ -251,7 +258,7 @@
     function sendData() {
       const value_1 = document.getElementById('tanggalStatus').innerText; // or textContent
       const value_2 = document.getElementById('aktivitasStatus').innerText; // or textContent
-      const url = `pilih-aktivitas.html?tgl=${encodeURIComponent(value_1)}&aktf=${encodeURIComponent(value_2)}`;
+      const url = `pilih-aktivitas.html?tgl=${encodeURIComponent(value_1)}&aktv=${encodeURIComponent(value_2)}`;
       window.location.href = url;
     }
   </script>
