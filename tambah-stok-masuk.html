@@ -252,6 +252,9 @@
   </div>
 
   <script>
+    // Tambahkan state custom ke history
+    window.history.pushState({ page: "tambah-stok-masuk" }, "", window.location.href);
+    
     function previewImage(event) {
       const file = event.target.files[0];
       if (!file) return;
