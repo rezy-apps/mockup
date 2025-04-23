@@ -246,7 +246,7 @@
       const tanggal = document.getElementById('tanggalPicker').value;
       if (tanggal) {
         const [yyyy, mm, dd] = tanggal.split("-");
-        const formatted = `${dd}-${mm}-${yyyy}`;
+        const formatted = `${dd}-${mmm}-${yyyy}`;
         const statusEl = document.getElementById('tanggalStatus');
         statusEl.innerText = formatted;
         statusEl.style.color = '#1f3b2c';
