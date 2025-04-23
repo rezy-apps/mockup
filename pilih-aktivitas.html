@@ -91,7 +91,7 @@
   </style>
 </head>
 <body>
-  <div class="top-bar" onclick="window.history.back()">
+  <div class="top-bar" onclick="sendDataBack()">
     <svg fill="none" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
     Kembali
   </div>
@@ -112,6 +112,14 @@
       const value = button.innerText; // Or button.textContent
       const params = new URLSearchParams(window.location.search);
       const tanggal = params.get('tgl');
+      const url = `pilih-tanggal-dan-aktivitas.html?tgl=${encodeURIComponent(tanggal)}&aktv=${encodeURIComponent(value)}`;
+      window.location.href = url;
+    }
+
+    function sendDataBack() {
+      const params = new URLSearchParams(window.location.search);
+      const tanggal = params.get('tgl');
+      const aktivitas = params.get('aktv');
       const url = `pilih-tanggal-dan-aktivitas.html?tgl=${encodeURIComponent(tanggal)}&aktv=${encodeURIComponent(value)}`;
       window.location.href = url;
     }
