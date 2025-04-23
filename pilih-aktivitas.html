@@ -100,11 +100,21 @@
   <div class="subsection">Depok</div>
 
   <div class="container">
-    <button class="button-option">Harian</button>
-    <button class="button-option">Rekapitulasi Tambahan</button>
+    <button class="button-option" onclick="sendData()">Harian</button>
+    <button class="button-option" onclick="sendData()">Rekapitulasi Tambahan</button>
     <div class="desc">
       Pilih rekapitulasi tambahan untuk daftarkan stok masuk yang tidak diketahui pasti tanggal datangnya dan berasal dari beberapa tanggal yang berbeda.
     </div>
   </div>
+
+  <script>
+    function sendData() {
+      const params = new URLSearchParams(window.location.search);
+      const tanggal = params.get('tgl');
+      const url = `pilih-tanggal-dan-aktivitas.html?tgl=${encodeURIComponent(tanggal)}`;
+      window.location.href = url;
+    }
+  </script>
+  
 </body>
 </html>
