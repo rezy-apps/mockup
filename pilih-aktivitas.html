@@ -112,7 +112,7 @@
       const value = button.innerText; // Or button.textContent
       const params = new URLSearchParams(window.location.search);
       const tanggal = params.get('tgl');
-      const url = `pilih-tanggal-dan-aktivitas.html?tgl=${encodeURIComponent(tanggal)}&aktf=${encodeURIComponent(value)}`;
+      const url = `pilih-tanggal-dan-aktivitas.html?tgl=${encodeURIComponent(tanggal)}&aktv=${encodeURIComponent(value)}`;
       window.location.href = url;
     }
   </script>
