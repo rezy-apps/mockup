@@ -123,6 +123,16 @@
       const url = `pilih-tanggal-dan-aktivitas.html?tgl=${encodeURIComponent(tanggal)}&aktv=${encodeURIComponent(aktivitas)}`;
       window.location.href = url;
     }
+
+    // Tambahkan state custom ke history
+    window.history.pushState({ page: "current-page" }, "", window.location.href);
+
+    // Listener tombol back
+    window.addEventListener("popstate", function (event) {
+      if (event.state && event.state.page === "current-page") {
+        sendDataBack(); // redirect tujuan
+      }
+    });
   </script>
   
 </body>
