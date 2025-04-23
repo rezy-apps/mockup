@@ -202,7 +202,7 @@
         <label>aktivitas</label>
         <div class="status">Belum dipilih</div>
         <!-- <div class="link" onclick="window.location.href='pilih-aktivitas.html'">Tekan di sini untuk pilih aktivitas</div> -->
-        <div class="link" onclick="goToNextPage('tes')">Tekan di sini untuk pilih aktivitas</div>
+        <div class="link" onclick="sendData()">Tekan di sini untuk pilih aktivitas</div>
       </div>
     </div>
   </div>
@@ -239,9 +239,10 @@
       document.getElementById('tanggalModal').style.display = 'none';
     }
 
-    function goToNextPage(value) {
-      // Redirect to another page with the value as URL parameter
-      window.location.href = `pilih-aktivitas.html?value=${encodeURIComponent(value)}`;
+    function sendData() {
+      const value = document.getElementById('tanggalStatus').innerText; // or textContent
+      const url = `pilih-aktivitas.html?tgl=${encodeURIComponent(value)}`;
+      window.location.href = url;
     }
   </script>
 
