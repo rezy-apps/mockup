@@ -223,11 +223,11 @@
 
   <script>
     // Tambahkan state custom ke history
-    window.history.pushState({ page: "current-page" }, "", window.location.href);
+    window.history.pushState({ page: "pilih-tanggal-dan-aktivitas" }, "", window.location.href);
 
     // Listener tombol back
     window.addEventListener("popstate", function (event) {
-      if (event.state && event.state.page === "current-page") {
+      if (event.state && event.state.page === "pilih-tanggal-dan-aktivitas") {
         window.location.href = "tambah-stok-masuk.html"; // redirect tujuan
       }
     });
