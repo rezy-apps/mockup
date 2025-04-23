@@ -224,7 +224,8 @@
   <script>
     const params = new URLSearchParams(window.location.search);
     const tanggal = params.get('tgl');
-    const statusEl = document.getElementById('tanggalStatus').textContent = tanggal || 'Belum dipilih';
+    const statusEl = document.getElementById('tanggalStatus');
+    statusEl.textContent = tanggal || 'Belum dipilih';
     if (statusEl.textContent != 'Belum dipilih') {
       statusEl.style.color = '#1f3b2c';
       statusEl.style.fontWeight = '600';
