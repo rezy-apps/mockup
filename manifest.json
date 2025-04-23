@@ -2,7 +2,7 @@
   "name": "Aplikasi Pencatatan",
   "short_name": "Rezycology",
   "start_url": ".",
-  "display": "standalone",
+  "display": "fullscreen",
   "background_color": "#f9f9f9",
   "theme_color": "#2f7a3e",
   "icons": [
