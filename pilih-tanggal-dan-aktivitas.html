@@ -224,7 +224,12 @@
   <script>
     const params = new URLSearchParams(window.location.search);
     const tanggal = params.get('tgl');
-    document.getElementById('tanggalStatus').textContent = tanggal || 'Belum dipilih';
+    const statusEl = document.getElementById('tanggalStatus').textContent = tanggal || 'Belum dipilih';
+    if (tanggal != 'Belum dipilih') {
+      statusEl.innerText = formatted;
+      statusEl.style.color = '#1f3b2c';
+      statusEl.style.fontWeight = '600';
+    }
     
     function bukaPopupTanggal() {
       document.getElementById('tanggalModal').style.display = 'flex';
