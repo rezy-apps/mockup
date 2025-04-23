@@ -222,6 +222,10 @@
   </div>
 
   <script>
+    const params = new URLSearchParams(window.location.search);
+    const tanggal = params.get('tgl');
+    document.getElementById('tanggalStatus').textContent = tanggal || 'No fruit selected';
+    
     function bukaPopupTanggal() {
       document.getElementById('tanggalModal').style.display = 'flex';
     }
