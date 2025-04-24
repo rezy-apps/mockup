@@ -296,8 +296,8 @@
       const value_1 = document.getElementById('tanggalStatus').innerText; // or textContent
       const value_2 = document.getElementById('aktivitasStatus').innerText; // or textContent
       const url = `pilih-aktivitas.html?tgl=${encodeURIComponent(value_1)}&aktv=${encodeURIComponent(value_2)}`;
-      //window.location.href = url;
-      window.location.replace(url);
+      window.location.href = url;
+      //window.location.replace(url);
     }
 
     function reset() {
