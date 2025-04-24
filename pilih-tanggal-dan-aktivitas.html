@@ -222,8 +222,13 @@
   </div>
 
   <script>
-    history.pushState({ backBlocked: true }, '', location.href);
+    // Tambahkan dummy state dulu agar ada history yang bisa diback
+    window.history.pushState({}, '', location.href); // ini hanya untuk membuat 1 entry kosong
 
+    // Lalu tambahkan state untuk kontrol back
+    window.history.pushState({ backBlocked: true }, '', location.href);
+
+    // Listener untuk tombol back
     window.addEventListener('popstate', function (e) {
       if (e.state && e.state.backBlocked) {
         location.href = 'tambah-stok-masuk.html';
