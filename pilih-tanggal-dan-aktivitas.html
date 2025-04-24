@@ -222,6 +222,14 @@
   </div>
 
   <script>
+    history.pushState({ backBlocked: true }, "", location.href);
+
+    window.addEventListener('popstate', function (e) {
+      if (e.state && e.state.backBlocked) {
+        location.href = 'tambah-stok-masuk.html';
+      }
+    });
+    
     const params = new URLSearchParams(window.location.search);
     const tanggal = params.get('tgl');
     const aktivitas = params.get('aktv');
