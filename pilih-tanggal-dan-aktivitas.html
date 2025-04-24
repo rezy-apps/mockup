@@ -310,6 +310,19 @@
       statusEl_1.style.fontWeight = '400';
       statusEl_2.style.fontWeight = '400';      
     }
+
+    document.querySelector('.submit-button').addEventListener('click', function () {
+      const tanggal = document.getElementById('tanggalStatus').innerText;
+      const aktivitas = document.getElementById('aktivitasStatus').innerText;
+    
+      if (tanggal === 'Belum dipilih' || aktivitas === 'Belum dipilih') {
+        alert('Harap lengkapi tanggal dan aktivitas terlebih dahulu sebelum menyimpan.');
+        return;
+      }
+    
+      // Proses simpan bisa dilanjutkan di sini
+      alert('Data berhasil disimpan!');
+    });
   </script>
 
 </body>
