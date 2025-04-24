@@ -222,18 +222,25 @@
   </div>
 
   <script>
-    // Tambahkan dummy state dulu agar ada history yang bisa diback
-    window.history.pushState({}, '', location.href); // ini hanya untuk membuat 1 entry kosong
+    function assignBackButton(url) {
+      // Store the current URL in history, so the back button works initially
+      history.pushState({ previousUrl: document.referrer }, '', location.href);
+    
+      // Replace the current history state with the desired URL
+      history.replaceState({ previousUrl: url }, '', url);
+    
+      // Listen for the popstate event, which is triggered when the user navigates
+      // through the history (e.g., by clicking the back or forward button).
+      window.addEventListener('popstate', function(event) {
+        // If the state has a previousUrl, redirect to it
+        if (event.state && event.state.previousUrl) {
+          location.href = event.state.previousUrl;
+        }
+      });
+    }
 
-    // Lalu tambahkan state untuk kontrol back
-    window.history.pushState({ backBlocked: true }, '', location.href);
-
-    // Listener untuk tombol back
-    window.addEventListener('popstate', function (e) {
-      if (e.state && e.state.backBlocked) {
-        location.href = 'tambah-stok-masuk.html';
-      }
-    });
+    // Example usage: Assign the back button to "https://example.com"
+    assignBackButton('tambah-stok-masuk.html');
     
     const params = new URLSearchParams(window.location.search);
     const tanggal = params.get('tgl');
