@@ -222,20 +222,6 @@
   </div>
 
   <script>
-    // Tambah dummy state agar ada yang bisa "diback"
-    window.history.pushState({}, "", location.href);
-  
-    // Tambah state yang akan ditangkap saat tombol back ditekan
-    window.history.pushState({ backBlocked: true }, "", location.href);
-  
-    // Tangkap event popstate (terpicu oleh tombol back OS Android juga)
-    window.addEventListener("popstate", function (e) {
-      if (e.state && e.state.backBlocked) {
-        // Redirect ke halaman tujuanmu
-        location.href = "tambah-stok-masuk.html";
-      }
-    });
-    
     const params = new URLSearchParams(window.location.search);
     const tanggal = params.get('tgl');
     const aktivitas = params.get('aktv');
