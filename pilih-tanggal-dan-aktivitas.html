@@ -222,7 +222,7 @@
   </div>
 
   <script>
-    history.pushState({ backBlocked: true }, "", location.href);
+    history.pushState({ backBlocked: true }, '', location.href);
 
     window.addEventListener('popstate', function (e) {
       if (e.state && e.state.backBlocked) {
