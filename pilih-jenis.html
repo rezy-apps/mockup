@@ -158,12 +158,25 @@
     function sendData(button) {
       const value = button.innerText; // Or button.textContent
       const params = new URLSearchParams(window.location.search);
-      const asal = params.get('asl');
-      const bentuk = params.get('bntk') + ', ' + value;
-      const petugas = params.get('ptgs');
-      const url = `pilih-asal-jenis-dan-petugas.html?asl=${encodeURIComponent(asal)}&jns=${encodeURIComponent(jenis)}&ptgs=${encodeURIComponent(petugas)}`;
-      //window.location.href = url;
-      window.location.replace(url);
+      const asal = params.get('asl')  || 'Belum dipilih';
+      const bentuk = params.get('bntk') || 'Belum dipilih';
+      const petugas = params.get('ptgs') || 'Belum dipilih';
+      
+      //ketika bentuk belum dipilih, maka kembalikan ke halaman pilih-bentuk.html
+      if (bentuk == 'Belum dipilih') {
+        const jenis = 'Belum dipilih';
+        const url = `pilih-asal-jenis-dan-petugas.html?asl=${encodeURIComponent(asal)}&jns=${encodeURIComponent(jenis)}&ptgs=${encodeURIComponent(petugas)}`;
+        //window.location.href = url;
+        window.location.replace(url);
+      }
+      //ketika bentuk sudah dipilih, maka kembalikan ke halaman pilih-asal-jenis-dan-petugas.html
+      else {
+        const jenis = bentuk + ', ' + value;
+        const url = `pilih-asal-jenis-dan-petugas.html?asl=${encodeURIComponent(asal)}&jns=${encodeURIComponent(jenis)}&ptgs=${encodeURIComponent(petugas)}`;
+        //window.location.href = url;
+        window.location.replace(url);
+      }
+      
     }
 
     function sendDataBack() {
