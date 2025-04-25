@@ -145,14 +145,14 @@
   <div class="subsection">Depok</div>
 
   <div class="container">
-    <div class="menu-card" onclick="sendData_Jenis_2(this)">
+    <div class="menu-card" onclick="sendData_Bentuk(this)">
       <div class="menu-icon">
         <img src="https://res.cloudinary.com/djznrjvy6/image/upload/v1745611946/icon-karung_mx3psd.png" alt="Karung">
       </div>
       <div class="menu-label">Karung</div>
     </div>
 
-    <div class="menu-card" onclick="sendData_Jenis_2(this)">
+    <div class="menu-card" onclick="sendData_Bentuk(this)">
       <div class="menu-icon">
         <img src="https://res.cloudinary.com/djznrjvy6/image/upload/v1745611945/icon-bal_fj7qqp.png" alt="Bal">
       </div>
@@ -161,12 +161,12 @@
   </div>
 
   <script>
-    function sendData_Jenis_2(button) {
+    function sendData_Bentuk(button) {
       const value = button.innerText; // Or button.textContent
       const params = new URLSearchParams(window.location.search);
       const asal = params.get('asl');
       const petugas = params.get('ptgs');
-      const url = `pilih-jenis.html?asl=${encodeURIComponent(asal)}&jns=${encodeURIComponent(value)}&ptgs=${encodeURIComponent(petugas)}`;
+      const url = `pilih-jenis.html?asl=${encodeURIComponent(asal)}&bntk=${encodeURIComponent(value)}&jns=${encodeURIComponent(jenis)}&ptgs=${encodeURIComponent(petugas)}`;
       //window.location.href = url;
       window.location.replace(url);
     }
