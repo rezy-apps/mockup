@@ -165,6 +165,7 @@
       const value = button.innerText; // Or button.textContent
       const params = new URLSearchParams(window.location.search);
       const asal = params.get('asl');
+      const jenis = params.get('jns');
       const petugas = params.get('ptgs');
       const url = `pilih-jenis.html?asl=${encodeURIComponent(asal)}&bntk=${encodeURIComponent(value)}&jns=${encodeURIComponent(jenis)}&ptgs=${encodeURIComponent(petugas)}`;
       //window.location.href = url;
