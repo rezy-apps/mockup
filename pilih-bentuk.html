@@ -166,7 +166,7 @@
       const params = new URLSearchParams(window.location.search);
       const asal = params.get('asl');
       const petugas = params.get('ptgs');
-      const url = `pilih-asal-jenis-dan-petugas.html?asl=${encodeURIComponent(asal)}&jns=${encodeURIComponent(value)}&ptgs=${encodeURIComponent(petugas)}`;
+      const url = `pilih-jenis.html?asl=${encodeURIComponent(asal)}&jns=${encodeURIComponent(value)}&ptgs=${encodeURIComponent(petugas)}`;
       //window.location.href = url;
       window.location.replace(url);
     }
