@@ -164,9 +164,9 @@
     function sendData_Bentuk(button) {
       const value = button.innerText; // Or button.textContent
       const params = new URLSearchParams(window.location.search);
-      const asal = params.get('asl');
-      const jenis = params.get('jns');
-      const petugas = params.get('ptgs');
+      const asal = params.get('asl') || 'Belum dipilih';
+      const jenis = params.get('jns') || 'Belum dipilih';
+      const petugas = params.get('ptgs') || 'Belum dipilih';
       const url = `pilih-jenis.html?asl=${encodeURIComponent(asal)}&bntk=${encodeURIComponent(value)}&jns=${encodeURIComponent(jenis)}&ptgs=${encodeURIComponent(petugas)}`;
       //window.location.href = url;
       window.location.replace(url);
