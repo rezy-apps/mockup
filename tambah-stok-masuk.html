@@ -105,7 +105,8 @@
       margin: 12px 0;
     }
 
-    input[type="text"] {
+    input[type="text"],
+    input[type="number"] {
       padding: 12px 14px;
       border: 1px solid #ccc;
       border-radius: 10px;
@@ -113,12 +114,10 @@
       color: #333;
     }
 
-    input[type="number"] {
-      padding: 12px 14px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      font-size: 15px;
-      color: #333;
+    input:focus {
+      border-color: #2f7a3e;
+      box-shadow: 0 0 6px rgba(47, 122, 62, 0.3);
+      outline: none;
     }
 
     input::placeholder {
