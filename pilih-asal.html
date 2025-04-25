@@ -107,7 +107,7 @@
   <div class="container">
     <button class="button-option" onclick="sendData(this)">Gabungan</button>
     <div class="desc">
-      Pilih rekapitulasi tambahan untuk daftarkan stok masuk yang tidak diketahui pasti tanggal datangnya dan berasal dari beberapa tanggal yang berbeda.
+      Pilih gabungan untuk barang yang tidak diketahui pasti asalnya.
     </div>
     <button class="button-option" onclick="sendData(this)">Memet</button>
     <button class="button-option" onclick="sendData(this)">Zaki</button>
@@ -133,7 +133,7 @@
       const asal = params.get('asl') || 'Belum dipilih';
       const jenis = params.get('jns') || 'Belum dipilih';
       const petugas = params.get('ptgs') || 'Belum dipilih';
-      const url = `pilih-asal-jenis-dan-petugas.html?asl=${encodeURIComponent(value)}&jns=${encodeURIComponent(jenis)}&ptgs=${encodeURIComponent(petugas)}`;
+      const url = `pilih-asal-jenis-dan-petugas.html?asl=${encodeURIComponent(asal)}&jns=${encodeURIComponent(jenis)}&ptgs=${encodeURIComponent(petugas)}`;
       //window.location.href = url;
       window.location.replace(url);
     }
