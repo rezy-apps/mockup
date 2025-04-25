@@ -159,7 +159,7 @@
       const value = button.innerText; // Or button.textContent
       const params = new URLSearchParams(window.location.search);
       const asal = params.get('asl');
-      const jenis = params.get('jns') + ',' + value;
+      const jenis = params.get('jns') + ', ' + value;
       const petugas = params.get('ptgs');
       const url = `pilih-asal-jenis-dan-petugas.html?asl=${encodeURIComponent(asal)}&jns=${encodeURIComponent(jenis)}&ptgs=${encodeURIComponent(petugas)}`;
       //window.location.href = url;
