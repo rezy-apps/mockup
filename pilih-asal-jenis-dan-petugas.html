@@ -2,6 +2,19 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
+  
+  <script>
+    window.addEventListener('pageshow', function (event) {
+      console.log('Cek load halaman');
+      const flag = localStorage.getItem('flagBack') || 'true';
+      if(flag == 'true') {
+	localStorage.setItem('flagBack', 'false');
+	const url = `tambah-stok-masuk.html`;
+	window.location.href = url;
+	}
+    });
+  </script>
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pilih Asalm, Jenis, dan Petugas</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
