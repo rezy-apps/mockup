@@ -122,22 +122,20 @@
   	}
     
     function sendData(button) {
-      localStorage.setItem('flagBack', 'true');
-      
       const value = button.innerText; // Or button.textContent
       const params = new URLSearchParams(window.location.search);
       const tanggal = params.get('tgl') || 'Belum dipilih';
+      localStorage.setItem('flagBack', 'true');
       const url = `pilih-tanggal-dan-aktivitas.html?tgl=${encodeURIComponent(tanggal)}&aktv=${encodeURIComponent(value)}`;
       window.location.href = url;
       //window.location.replace(url);
     }
 
     function sendDataBack() {
-      localStorage.setItem('flagBack', 'true');
-      
       const params = new URLSearchParams(window.location.search);
       const tanggal = params.get('tgl') || 'Belum dipilih';
       const aktivitas = params.get('aktv') || 'Belum dipilih';
+      localStorage.setItem('flagBack', 'true');
       const url = `pilih-tanggal-dan-aktivitas.html?tgl=${encodeURIComponent(tanggal)}&aktv=${encodeURIComponent(aktivitas)}`;
       window.location.href = url;
       //window.location.replace(url);
