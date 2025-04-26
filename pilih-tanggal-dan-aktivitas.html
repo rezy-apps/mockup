@@ -5,20 +5,21 @@
 
 <script>
 
-window.addEventListener('pageshow', function (event) {
-    console.log('Halaman dimuat atau muncul dari cache!');
-    if (event.persisted) {
-      console.log('Halaman ini dari bfcache (Back-Forward Cache)');
+window.addEventListener('popstate', function (event) {
+    console.log('Back button ditekan!');
+    // Kamu bisa jalankan apa aja di sini
 
-const flag = localStorage.getItem('flagBack') || 'true';
+
+	const flag = localStorage.getItem('flagBack') || 'true';
       if(flag == 'true') {
 	localStorage.setItem('flagBack', 'false');
 	const url = `tambah-stok-masuk.html`;
 	window.location.href = url;
 	}
-	    
-    }
   });
+
+	
+
 
 	  
     
