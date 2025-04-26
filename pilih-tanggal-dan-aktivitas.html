@@ -303,6 +303,10 @@
     }
 
     function sendData() {
+      //ini untuk handling back-button
+  	  //tiap kali kirim data sesuai flow, asign flag to false
+  	  localStorage.setItem('flagBack', 'false');
+      
       const value_1 = document.getElementById('tanggalStatus').innerText; // or textContent
       const value_2 = document.getElementById('aktivitasStatus').innerText; // or textContent
       const url = `pilih-aktivitas.html?tgl=${encodeURIComponent(value_1)}&aktv=${encodeURIComponent(value_2)}`;
