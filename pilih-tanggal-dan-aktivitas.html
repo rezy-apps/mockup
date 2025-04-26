@@ -5,18 +5,18 @@
 
 <script>
 
-window.addEventListener('popstate', function (event) {
-    console.log('Back button ditekan!');
+//window.addEventListener('popstate', function (event) {
+//    console.log('Back button ditekan!');
     // Kamu bisa jalankan apa aja di sini
 
 
-	const flag = localStorage.getItem('flagBack') || 'true';
-      if(flag == 'true') {
-	localStorage.setItem('flagBack', 'false');
-	const url = `tambah-stok-masuk.html`;
-	window.location.href = url;
-	}
-  });
+//	const flag = localStorage.getItem('flagBack') || 'true';
+//      if(flag == 'true') {
+//	localStorage.setItem('flagBack', 'false');
+//	const url = `tambah-stok-masuk.html`;
+//	window.location.href = url;
+//	}
+//  });
 
 	
 
@@ -255,6 +255,16 @@ window.addEventListener('popstate', function (event) {
   </div>
 
   <script>
+
+let skipBack = true; // supaya tidak looping terus-terusan
+
+window.addEventListener('popstate', function (event) {
+  if (skipBack) {
+    skipBack = false; // supaya cuma sekali trigger
+    history.go(-2);    // mundur 2 halaman
+  }
+});
+	  
 	const params = new URLSearchParams(window.location.search);
     const tanggal = params.get('tgl');
     const aktivitas = params.get('aktv');
