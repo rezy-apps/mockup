@@ -120,7 +120,30 @@
 	  const url = `tambah-stok-masuk.html`;
 	  window.location.href = url;
 	}
+
+window.addEventListener('pageshow', function (event) {
+    console.log('Halaman dimuat atau muncul dari cache!');
+
+	const flag = localStorage.getItem('flagBack') || 'true';
+	if(flag == 'true') {
+	  localStorage.setItem('flagBack', 'false');
+	  const url = `tambah-stok-masuk.html`;
+	  window.location.href = url;
+	}
+
 	
+    if (event.persisted) {
+      console.log('Halaman ini dari bfcache (Back-Forward Cache)');
+
+	    const flag = localStorage.getItem('flagBack') || 'true';
+	if(flag == 'true') {
+	  localStorage.setItem('flagBack', 'false');
+	  const url = `tambah-stok-masuk.html`;
+	  window.location.href = url;
+	}
+    }
+  });
+	  
 	function sendData(button) {
       const value = button.innerText; // Or button.textContent
       const params = new URLSearchParams(window.location.search);
