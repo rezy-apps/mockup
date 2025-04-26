@@ -259,7 +259,10 @@
 let skipBack = true; // supaya tidak looping terus-terusan
 
 window.addEventListener('popstate', function (event) {
-  if (skipBack) {
+
+	alert('deteksi back!');
+	
+if (skipBack) {
     skipBack = false; // supaya cuma sekali trigger
     history.go(-2);    // mundur 2 halaman
   }
