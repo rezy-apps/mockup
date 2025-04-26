@@ -1,27 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <script>
-
-window.addEventListener('pageshow', function (event) {
-    console.log('Halaman dimuat atau muncul dari cache!');
-    if (event.persisted) {
-      console.log('Halaman ini dari bfcache (Back-Forward Cache)');
-
-const flag = localStorage.getItem('flagBack') || 'true';
-      if(flag == 'true') {
-	localStorage.setItem('flagBack', 'false');
-	const url = `tambah-stok-masuk.html`;
-	window.location.href = url;
-	}
-	    
-    }
-  });
-
-	  
-    
-  </script>
-	
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pilih Aktivitas</title>
