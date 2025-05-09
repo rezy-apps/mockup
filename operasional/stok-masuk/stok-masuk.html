@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pilih Gudang</title>
+  <title>Stok Masuk</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
   <style>
     * {
@@ -52,11 +52,18 @@
     }
 
     .section-title {
-      background-color: #1f2d26;
+      background-color: #00b6bd;
       color: white;
       font-weight: 600;
       padding: 12px 16px;
       font-size: 16px;
+    }
+
+    .subsection {
+      background-color: #007780;
+      color: white;
+      padding: 8px 16px;
+      font-size: 14px;
     }
 
     .container {
@@ -68,7 +75,7 @@
 
     .menu-card {
       background-color: white;
-      border: 1.5px solid #3e833f;
+      border: 1.5px solid #2f7a3e;
       border-radius: 10px;
       padding: 16px;
       display: flex;
@@ -87,6 +94,22 @@
       cursor: pointer;
     }
 
+    /*
+    .menu-icon {
+      background-color: #e8efe9;
+      border-radius: 50%;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .menu-icon img {
+      width: 42px;
+      height: 42px;
+    }
+    */
+    
     .menu-icon {
       display: flex;
       align-items: center;
@@ -104,12 +127,6 @@
       color: #2f7a3e;
     }
 
-    .menu-desc {
-      font-size: 14px;
-      color: #1f3b2c;
-      margin-top: 2px;
-    }
-
     @media (max-width: 480px) {
       .menu-label {
         font-size: 15px;
@@ -124,36 +141,29 @@
     Kembali
   </div>
 
-  <div class="section-title">Pilih Gudang</div>
+  <div class="section-title">Stok Masuk</div>
+  <div class="subsection">Depok</div>
 
   <div class="container">
-    <div class="menu-card" onclick="window.location.href='pilih-catatan.html'">
+    <div class="menu-card" onclick="window.location.href='tambah-stok-masuk.html'">
       <div class="menu-icon">
-        <img src="https://res.cloudinary.com/djznrjvy6/image/upload/v1744555337/icon-pin-point_txt9ah.png" alt="Depok">
+        <img src="https://res.cloudinary.com/djznrjvy6/image/upload/v1744558351/icon-tambah-catatan_lzchwt.png" alt="Tambah Catatan">
       </div>
-      <div>
-        <div class="menu-label">Depok</div>
-        <div class="menu-desc">Jalan Lapangan Bola No. 212</div>
-      </div>
+      <div class="menu-label">Tambah Catatan</div>
     </div>
 
     <div class="menu-card">
       <div class="menu-icon">
-        <img src="https://res.cloudinary.com/djznrjvy6/image/upload/v1744555337/icon-pin-point_txt9ah.png" alt="Subang">
+        <img src="https://res.cloudinary.com/djznrjvy6/image/upload/v1744558352/icon-lihat-catatan_mkbhbe.png" alt="Lihat Catatan">
       </div>
-      <div>
-        <div class="menu-label">Subang</div>
-        <div class="menu-desc">Jalan Lapangan Bola No. 212</div>
-      </div>
+      <div class="menu-label">Lihat Catatan</div>
     </div>
 
     <div class="menu-card">
       <div class="menu-icon">
-        <img src="https://res.cloudinary.com/djznrjvy6/image/upload/v1744555337/icon-pin-point_txt9ah.png" alt="Cikarang">
+        <img src="https://res.cloudinary.com/djznrjvy6/image/upload/v1744558351/icon-ubah-catatan_ij6icr.png" alt="Ubah Catatan">
       </div>
-      <div>
-        <div class="menu-label">Cikarang</div>
-      </div>
+      <div class="menu-label">Ubah Catatan</div>
     </div>
   </div>
 
