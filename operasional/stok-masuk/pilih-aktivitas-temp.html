@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pilih Aktivitas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f8f6;
+      color: #1f3b2c;
+      animation: fadeIn 0.8s ease-in;
+      padding-bottom: 80px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .top-bar {
+      background-color: #cedace;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      font-weight: 600;
+      color: #264d33;
+      cursor: pointer;
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* IE10+/Edge */
+      user-select: none;         /* Standard */
+      -webkit-touch-callout: none;
+    }
+
+    .top-bar svg {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      stroke: #264d33;
+    }
+
+    .section-title {
+      background-color: #00b6bd;
+      color: white;
+      font-weight: 600;
+      padding: 12px 16px;
+      font-size: 16px;
+    }
+
+    .subsection {
+      background-color: #007780;
+      color: white;
+      padding: 8px 16px;
+      font-size: 13px;
+    }
+
+    .container {
+      padding: 32px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      align-items: center;
+      text-align: left;
+    }
+
+    .button-option {
+      border: 1.5px solid #3e833f;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      width: 100%;
+      max-width: 360px;
+      color: #3e833f;
+      background-color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .desc {
+      margin-top: -30px;
+      color: #555;
+      font-size: 11px;
+      max-width: 360px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar" onclick="sendDataBack()">
+    <svg fill="none" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+    Kembali
+  </div>
+
+  <div class="section-title">Pilih Aktivitas</div>
+  <div class="subsection">Depok</div>
+
+  <div class="container">
+    <button class="button-option" onclick="sendData(this)">Harian</button>
+    <button class="button-option" onclick="sendData(this)">Rekapitulasi Tambahan</button>
+    <div class="desc">
+      Pilih rekapitulasi tambahan untuk barang yang tidak diketahui pasti tanggal datangnya dan berasal dari beberapa tanggal yang berbeda.
+    </div>
+  </div>
+
+  <script>
+    //ini untuk handling back-button
+  	const flag = localStorage.getItem('flagBack') || 'true';
+  	if(flag == 'true') {
+  	  localStorage.setItem('flagBack', 'false');
+  	  const url = `tambah-stok-masuk.html`;
+  	  window.location.href = url;
+  	}
+    
+    function sendData(button) {
+      const value = button.innerText; // Or button.textContent
+      const params = new URLSearchParams(window.location.search);
+      const tanggal = params.get('tgl') || 'Belum dipilih';
+      localStorage.setItem('flagBack', 'true');
+      const url = `pilih-tanggal-dan-aktivitas.html?tgl=${encodeURIComponent(tanggal)}&aktv=${encodeURIComponent(value)}`;
+      window.location.href = url;
+      //window.location.replace(url);
+    }
+
+    function sendDataBack() {
+      const params = new URLSearchParams(window.location.search);
+      const tanggal = params.get('tgl') || 'Belum dipilih';
+      const aktivitas = params.get('aktv') || 'Belum dipilih';
+      localStorage.setItem('flagBack', 'true');
+      const url = `pilih-tanggal-dan-aktivitas.html?tgl=${encodeURIComponent(tanggal)}&aktv=${encodeURIComponent(aktivitas)}`;
+      window.location.href = url;
+      //window.location.replace(url);
+    }
+  </script>
+  
+</body>
+</html>
