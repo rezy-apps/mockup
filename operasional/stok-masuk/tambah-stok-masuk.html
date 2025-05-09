@@ -228,7 +228,7 @@
       <div class="form-group">
         <label>Tanggal dan Aktivitas</label>
         <div class="status">Belum dipilih</div>
-        <div class="link" onclick="sendData_2()">Tekan di sini untuk pilih tanggal dan aktivitas</div>
+        <div class="link" onclick="window.location.href='pilih-tanggal-dan-aktivitas.html'">Tekan di sini untuk pilih tanggal dan aktivitas</div>
       </div>
 
       <div class="form-group">
@@ -274,15 +274,6 @@
   </div>
 
   <script>
-
-    function sendData_2() {
-	  //ini untuk handling back-button
-	  //tiap kali kirim data sesuai flow, asign flag to false
-	  localStorage.setItem('flagBack', 'false');
-    window.location.href='pilih-tanggal-dan-aktivitas.html';
-      
-    }
-    
     function previewImage(event) {
       const file = event.target.files[0];
       if (!file) return;
