@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pilih Daftar Timbangan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f8f6;
+      color: #1f3b2c;
+      animation: fadeIn 0.8s ease-in;
+      padding-bottom: 32px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .top-bar {
+      background-color: #cedace;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      font-weight: 600;
+      color: #264d33;
+      cursor: pointer;
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* IE10+/Edge */
+      user-select: none;         /* Standard */
+      -webkit-touch-callout: none;
+    }
+
+    .top-bar svg {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      stroke: #264d33;
+    }
+
+    .section-title {
+      background-color: #00b6bd;
+      color: white;
+      font-weight: 600;
+      padding: 12px 16px;
+      font-size: 16px;
+    }
+
+    .subsection {
+      background-color: #007780;
+      color: white;
+      padding: 8px 16px;
+      font-size: 13px;
+    }
+
+    .container {
+      padding: 32px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      align-items: center;
+      text-align: left;
+    }
+
+    /*.button-option {
+      border: 1.5px solid #3e833f;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      width: 100%;
+      max-width: 360px;
+      color: #3e833f;
+      background-color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }*/
+
+	.data-header-wrapper {
+	  /*align-self: flex-start;*/
+	  text-align: center;
+	}
+
+	.data-header {
+	  font-size: 13px;
+	  /*font-weight: 600;*/
+	  color: #1f3b2c;
+	  /*align-self: flex-start;*/
+	  padding-left: 4px;
+	}
+	
+	.data-subheader {
+	  font-size: 12px;
+	  /*font-weight: 500;*/
+	  color: #666;
+	  /*color: #888;*/
+	  padding-left: 4px;
+	  margin-top: 2px;
+	}
+
+	.data-box {
+      border: 1.5px solid #3e833f;
+      padding: 14px;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 360px;
+      color: #3e833f;
+      background-color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+	  text-align: center;
+	}
+
+	/*.data-box {
+	  border: 1.5px solid #3e833f;
+	  border-radius: 8px;
+	  padding: 12px;
+	  width: 100%;
+	  max-width: 360px;
+	  background-color: white;
+	  color: #3e833f;
+	}*/
+
+	.data-box .main {
+	  font-size: 16px;
+	  font-weight: 600;
+	  margin-bottom: 4px;
+	}
+
+	.data-box .desc {
+	  font-size: 12px;
+	  color: #1f3b2c;
+	}
+
+    .divider {
+      border-top: 1px solid #e0e0e0;
+      margin: 12px 0;
+      align-self: stretch;
+      width: 100%;
+    }
+
+    .bottom-divider {
+      border-top: 1px solid #e0e0e0;
+      margin: 12px 0 0;
+      align-self: stretch;
+      width: 100%;
+    }
+
+    .nav-link {
+      text-align: center;
+      margin: 4px 0 0;
+      font-size: 14px;
+    }
+
+    .nav-link a {
+      color: #2f7a3e;
+      font-weight: 600;
+      text-decoration: underline;
+      cursor: pointer;
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* IE10+/Edge */
+      user-select: none;         /* Standard */
+      -webkit-touch-callout: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar" onclick="window.location.replace('lihat-stok-masuk.html')">
+    <svg fill="none" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+    Kembali
+  </div>
+
+  <div class="section-title">Pilih Daftar Timbangan</div>
+  <div class="subsection" id="dataSubsection">Depok</div>
+
+  <div class="container">
+	
+	  <!-- Baris Judul -->
+	  <div class="data-header-wrapper">
+	  	  <div class="data-header">ID • Tot. Timbangan • Berat • Barang</div>
+	  	  <div class="data-subheader">Aktivitas • Asal • Jenis • Petugas</div>
+	  </div>
+
+	  <!-- Daftar Item -->
+	  <div class="data-box" onclick="window.location.replace('lihat-daftar-timbangan.html')">
+	      <div class="main">#1 • 2 • 200 kg • 100</div>
+	      <div class="desc">Harian • Mamat • Bal, PET Merah • Melon</div>
+	  </div>
+	  <div class="data-box">
+	      <div class="main">#2 • 2 • 200 kg • 100</div>
+	      <div class="desc">Harian</div>
+	  </div>
+	  <div class="data-box">
+	      <div class="main">#3 • 2 • 200 kg • 100</div>
+	      <div class="desc">Harian • Bal, PET Merah • Melon</div>
+	  </div>
+	  <div class="data-box">
+	      <div class="main">#4 • 2 • 200 kg • 100</div>
+	      <div class="desc"></div>
+	  </div>
+    
+	<div class="bottom-divider"></div>
+    
+    <div class="nav-link">
+      <a href="#">Tekan di sini</a> untuk muat sebelumnya
+    </div>
+
+    <div class="nav-link">
+      <a href="#">Tekan di sini</a> untuk muat selanjutnya
+    </div>
+  </div>
+
+  <script>
+	  
+  	  function bersihkanStatus(statusStr) {
+  	    if (!statusStr || statusStr.includes('null')) return '';
+  	    return statusStr
+  	  	  .split(',')
+  	  	  .map(item => item.trim())
+  	  	  .filter(item => item !== 'Belum dipilih')
+  	  	  .join(', ') || '';
+  	  }
+	   
+	  //ambil data untuk isi data subsection
+	  const tanggal = localStorage.getItem('data_tgl_2');
+	  const aktivitas = localStorage.getItem('data_aktv_2');
+	  const asal = localStorage.getItem('data_asl_2');
+	  const jenis = localStorage.getItem('data_jns_2');
+	  const petugas = localStorage.getItem('data_ptgs_2');
+	  
+	  const dataSubsectionEl = document.getElementById('dataSubsection');
+
+	  // Buat array dari elemen-elemen yang ingin digabungkan
+	  const bagian = [
+	    'Depok',
+	    bersihkanStatus(tanggal),
+	    bersihkanStatus(aktivitas),
+	    bersihkanStatus(asal),
+	    bersihkanStatus(jenis),
+	    bersihkanStatus(petugas)
+	  ];
+
+	  // Filter elemen kosong, lalu gabungkan dengan koma
+	  const hasil = bagian.filter(item => item && item !== '').join(', ');
+
+	  // Tampilkan hasil
+	  dataSubsectionEl.textContent = hasil;
+		
+  </script>
+  
+</body>
+</html>

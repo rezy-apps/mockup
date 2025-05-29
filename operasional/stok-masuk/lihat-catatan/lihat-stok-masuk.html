@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lihat Stok Masuk</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f8f6;
+      color: #1f3b2c;
+      animation: fadeIn 0.8s ease-in;
+      padding-bottom: 100px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .top-bar {
+      background-color: #cedace;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      font-weight: 600;
+      color: #264d33;
+      cursor: pointer;
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* IE10+/Edge */
+      user-select: none;         /* Standard */
+      -webkit-touch-callout: none;
+    }
+
+    .top-bar:hover {
+      background-color: #b6c8b6;
+    }
+
+    .top-bar svg {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      stroke: #264d33;
+    }
+
+    .section-title {
+      background-color: #00b6bd;
+      color: white;
+      font-weight: 600;
+      padding: 12px 16px;
+      font-size: 16px;
+    }
+
+    .subsection {
+      background-color: #007780;
+      color: white;
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+
+    .container {
+      padding: 32px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .form-section {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      font-size: 14px;
+    }
+	
+	.optional-label {
+	  font-weight: 400;
+	  font-size: 12px;
+	  color: #888;
+	  /*margin-left: 6px;*/
+	}
+
+    .form-group .status {
+      color: #d0d0d0;
+      font-size: 18px;
+      font-weight: 400;
+    }
+
+    .form-group .link {
+      font-size: 13px;
+      color: #2f7a3e;
+      text-decoration: underline;
+      cursor: pointer;
+      font-weight: 600;
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* IE10+/Edge */
+      user-select: none;         /* Standard */
+      -webkit-touch-callout: none;
+    }
+
+    .divider {
+      border-top: 1px solid #e0e0e0;
+      margin: 12px 0;
+    }
+
+    .action-link {
+      text-align: center;
+      margin: 4px 0 0;
+      font-size: 14px;
+    }
+
+    .action-link a {
+      color: #2f7a3e;
+      font-weight: 600;
+      text-decoration: underline;
+      cursor: pointer;
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* IE10+/Edge */
+      user-select: none;         /* Standard */
+      -webkit-touch-callout: none;
+    }
+
+    .bottom-divider {
+      border-top: 1px solid #e0e0e0;
+      margin: 12px 0 0;
+    }
+
+    .bottom-sheet {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+      padding: 16px;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+    }
+
+    .submit-button {
+      background-color: #3e833f;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+      width: 100%;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .submit-button:hover {
+      background-color: #2f7a3e;
+    }
+	
+	.summary-section {
+	  display: flex;
+	  flex-direction: column;
+	  gap: 32px;
+	  /*padding: 16px;*/
+	}
+
+	.summary-title {
+	  font-size: 24px;
+	  font-weight: 900;
+	  color: #1f3b2c;
+	}
+
+	/*.summary-item .label {
+	  font-size: 14px;
+	  color: #1f3b2c;
+	}*/
+	
+	.summary-item {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+	}
+	
+    .summary-item label {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+	.summary-item .value {
+	  /*font-size: 20px;*/
+	  font-size: 18px;
+	  font-weight: 600;
+	  /*color: #1f3b2c;*/
+	  /*margin-top: 6px;*/
+	}
+	
+  </style>
+</head>
+<body>
+
+  <div class="top-bar" onclick="window.location.replace('file:///Users/pfy160/Documents/Rezy/V1-1-1/mockup/operasional/stok-masuk/stok-masuk.html')">
+    <svg fill="none" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+    Kembali
+  </div>
+
+  <div class="section-title">Lihat Stok Masuk</div>
+  <div class="subsection">Depok</div>
+
+  <div class="container">
+    <div class="form-section">
+      <div class="form-group">
+        <label>Tanggal dan Aktivitas</label>
+        <div class="status" id="tanggalDanAktivitasStatus">Belum dipilih</div>
+        <div class="link" onclick="window.location.replace('pilih-tanggal-dan-aktivitas.html')">Tekan di sini untuk pilih tanggal dan aktivitas</div>
+      </div>
+
+      <div class="form-group">
+        <label>Asal, Jenis, dan Petugas
+			<span class="optional-label">(opsional)</span>
+		</label>
+        <div class="status" id="asalJenisDanPetugasStatus">Belum dipilih</div>
+        <div class="link" onclick="window.location.replace('pilih-asal-jenis-dan-petugas.html')">Tekan di sini untuk pilih asal, jenis, dan petugas</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+	<div class="summary-section">
+	  <div class="summary-title">Ringkasan</div>
+	  <div class="summary-item">
+	    <label>Total Kelompok Timbang</label>
+	    <div class="value" id="dataTKT">0</div>
+	  </div>
+	  <div class="summary-item">
+	    <label>Total Timbangan</label>
+	    <div class="value" id="dataTT">0</div>
+	  </div>
+	  <div class="summary-item">
+	    <label>Total Berat</label>
+	    <div class="value" id="dataBrt">0 kg</div>
+	  </div>
+	  <div class="summary-item">
+	    <label>Total Barang</label>
+	    <div class="value" id="dataBrg">0</div>
+	  </div>
+	</div>
+    
+    <div class="bottom-divider"></div>
+
+    <div class="action-link">
+      <a href="#" onclick="lihatSelengkapnya()">Tekan di sini</a> untuk lihat selengkapnya
+    </div>
+	
+  </div>
+
+  <div class="bottom-sheet">
+    <button class="submit-button">Cari ke DB</button>
+  </div>
+
+  <script>
+    
+	// Tambahan per tgl 28 Mei 2025
+    //localStorage.removeItem('data_tgl_2');
+    //localStorage.removeItem('data_aktv_2');
+	// Fungsi untuk membersihkan teks "Belum dipilih" dan merapikan koma
+	function bersihkanStatus(statusStr) {
+	  if (!statusStr || statusStr.includes('null')) return 'Belum dipilih';
+	  return statusStr
+	  	.split(',')
+	  	.map(item => item.trim())
+	  	.filter(item => item !== 'Belum dipilih')
+	  	.join(', ') || 'Belum dipilih';
+	}
+	  	
+	// Ambil data dari localStorage
+	const data_tgl_aktv = localStorage.getItem('data_tgl_2') + ', ' + localStorage.getItem('data_aktv_2');
+	const data_asl_jns_ptgs = localStorage.getItem('data_asl_2') + ', ' + localStorage.getItem('data_jns_2') + ', ' + localStorage.getItem('data_ptgs_2');
+    const statusEl_1 = document.getElementById('tanggalDanAktivitasStatus');
+	const statusEl_2 = document.getElementById('asalJenisDanPetugasStatus');
+	statusEl_1.textContent = bersihkanStatus(data_tgl_aktv);
+	statusEl_2.textContent = bersihkanStatus(data_asl_jns_ptgs);
+    // Atur format teks
+	if (statusEl_1.textContent != 'Belum dipilih') {
+      statusEl_1.style.color = '#1f3b2c';
+      statusEl_1.style.fontWeight = '600';
+    }
+	if (statusEl_2.textContent != 'Belum dipilih') {
+      statusEl_2.style.color = '#1f3b2c';
+      statusEl_2.style.fontWeight = '600';
+    }
+
+    document.querySelector('.submit-button').addEventListener('click', function () {
+      
+      if (
+        data_tgl_aktv === 'null, null'||
+        data_tgl_aktv === 'null, Belum dipilih'
+      ) {
+        alert('Harap lengkapi tanggal terlebih dahulu sebelum cari ke DB.');
+        return;
+      }
+
+	  // Proses query data ke DB
+  	  document.getElementById('dataTKT').textContent = '25';
+  	  document.getElementById('dataTT').textContent = '10';
+  	  document.getElementById('dataBrt').textContent = '1000 kg';
+  	  document.getElementById('dataBrg').textContent = '20';
+
+      // Proses simpan bisa dilanjutkan di sini
+      //alert('Data berhasil disimpan ke DB!');
+
+    });
+		
+	function lihatSelengkapnya() {
+		// Redirect ke halaman tujuan
+		window.location.replace('pilih-daftar-timbangan.html');
+	}
+	// Tambahan per tgl 28 Mei 2025
+  </script>
+
+</body>
+</html>
