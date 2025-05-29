@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stok Masuk</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f8f6;
+      color: #1f3b2c;
+      animation: fadeIn 0.8s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .top-bar {
+      background-color: #cedace;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      font-weight: 600;
+      color: #264d33;
+      cursor: pointer;
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* IE10+/Edge */
+      user-select: none;         /* Standard */
+      -webkit-touch-callout: none;
+    }
+
+    .top-bar:hover {
+      background-color: #b6c8b6;
+    }
+
+    .top-bar svg {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      stroke: #264d33;
+    }
+
+    .section-title {
+      background-color: #00b6bd;
+      color: white;
+      font-weight: 600;
+      padding: 12px 16px;
+      font-size: 16px;
+    }
+
+    .subsection {
+      background-color: #007780;
+      color: white;
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+
+    .container {
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .menu-card {
+      background-color: white;
+      border: 1.5px solid #2f7a3e;
+      border-radius: 10px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: transform 0.2s ease;
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* IE10+/Edge */
+      user-select: none;         /* Standard */
+      -webkit-touch-callout: none;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-2px);
+      cursor: pointer;
+    }
+
+    /*
+    .menu-icon {
+      background-color: #e8efe9;
+      border-radius: 50%;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .menu-icon img {
+      width: 42px;
+      height: 42px;
+    }
+    */
+    
+    .menu-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .menu-icon img {
+      width: 63px;
+      height: 63px;
+    }
+
+    .menu-label {
+      font-weight: 600;
+      font-size: 16px;
+      color: #2f7a3e;
+    }
+
+    @media (max-width: 480px) {
+      .menu-label {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar" onclick="window.location.replace('file:///Users/pfy160/Documents/Rezy/V1-1-1/mockup/pilih-catatan.html')">
+    <svg fill="none" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+    Kembali
+  </div>
+
+  <div class="section-title">Stok Masuk</div>
+  <div class="subsection">Depok</div>
+
+  <div class="container">
+    <div class="menu-card" onclick="window.location.replace('file:///Users/pfy160/Documents/Rezy/V1-1-1/mockup/operasional/stok-masuk/tambah-catatan/tambah-stok-masuk.html')">
+      <div class="menu-icon">
+        <img src="https://res.cloudinary.com/djznrjvy6/image/upload/v1744558351/icon-tambah-catatan_lzchwt.png" alt="Tambah Catatan">
+      </div>
+      <div class="menu-label">Tambah Catatan</div>
+    </div>
+
+	<div class="menu-card" onclick="window.location.replace('file:///Users/pfy160/Documents/Rezy/V1-1-1/mockup/operasional/stok-masuk/lihat-catatan/lihat-stok-masuk.html')">
+      <div class="menu-icon">
+        <img src="https://res.cloudinary.com/djznrjvy6/image/upload/v1744558352/icon-lihat-catatan_mkbhbe.png" alt="Lihat Catatan">
+      </div>
+      <div class="menu-label">Lihat Catatan</div>
+    </div>
+
+    <div class="menu-card">
+      <div class="menu-icon">
+        <img src="https://res.cloudinary.com/djznrjvy6/image/upload/v1744558351/icon-ubah-catatan_ij6icr.png" alt="Ubah Catatan">
+      </div>
+      <div class="menu-label">Ubah Catatan</div>
+    </div>
+  </div>
+
+</body>
+</html>
