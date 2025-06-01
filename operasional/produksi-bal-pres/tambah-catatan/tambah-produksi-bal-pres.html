@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tambah Produksi Bal Pres</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f8f6;
+      color: #1f3b2c;
+      animation: fadeIn 0.8s ease-in;
+      padding-bottom: 100px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .top-bar {
+      background-color: #cedace;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      font-weight: 600;
+      color: #264d33;
+      cursor: pointer;
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* IE10+/Edge */
+      user-select: none;         /* Standard */
+      -webkit-touch-callout: none;
+    }
+
+    .top-bar:hover {
+      background-color: #b6c8b6;
+    }
+
+    .top-bar svg {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      stroke: #264d33;
+    }
+
+    .section-title {
+		background-color: #1A48C6;
+      color: white;
+      font-weight: 600;
+      padding: 12px 16px;
+      font-size: 16px;
+    }
+
+    .subsection {
+		/*background-color: #1A48C6;*/
+	      background-color: #143695;
+      color: white;
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+
+    .container {
+      padding: 32px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .form-section {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+	
+	.form-group-title {
+	  font-size: 24px;
+	  font-weight: 900;
+	  color: #1f3b2c;
+	  padding-bottom: 22px;
+	}
+
+    .form-group label {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .form-group .status {
+      color: #d0d0d0;
+      font-size: 18px;
+      font-weight: 400;
+    }
+
+    .form-group .link {
+      font-size: 13px;
+      color: #2f7a3e;
+      text-decoration: underline;
+      cursor: pointer;
+      font-weight: 600;
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* IE10+/Edge */
+      user-select: none;         /* Standard */
+      -webkit-touch-callout: none;
+    }
+
+    .divider {
+      border-top: 1px solid #e0e0e0;
+      margin: 12px 0;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      padding: 12px 14px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 15px;
+      color: #333;
+    }
+
+    input:focus {
+      border-color: #2f7a3e;
+      box-shadow: 0 0 6px rgba(47, 122, 62, 0.3);
+      outline: none;
+    }
+
+    input::placeholder {
+      color: #bbb;
+    }
+
+    .upload-link {
+      text-align: center;
+      margin: 4px 0 0;
+      font-size: 14px;
+    }
+
+    .upload-link a {
+      color: #2f7a3e;
+      font-weight: 600;
+      text-decoration: underline;
+      cursor: pointer;
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* IE10+/Edge */
+      user-select: none;         /* Standard */
+      -webkit-touch-callout: none;
+    }
+
+    .image-preview {
+      display: none;
+      margin-top: 4px;
+    }
+
+    .image-preview img {
+      max-width: 90%;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .delete-image {
+      color: #D20A2E;
+      font-size: 13px;
+      margin-top: 4px;
+      display: block;
+      text-decoration: underline;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: right;
+      padding-right: 16px;
+    }
+
+    .bottom-divider {
+      border-top: 1px solid #e0e0e0;
+      margin: 12px 0 0;
+    }
+
+    .bottom-sheet {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+      padding: 16px;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+    }
+
+    .submit-button {
+      background-color: #3e833f;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+      width: 100%;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .submit-button:hover {
+      background-color: #2f7a3e;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar" onclick="window.location.replace('/mockup/operasional/produksi-bal-pres/produksi-bal-pres.html')">
+    <svg fill="none" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+    Kembali
+  </div>
+
+  <div class="section-title">Tambah Produksi Bal Pres</div>
+  <div class="subsection">Depok</div>
+
+  <div class="container">
+    <div class="form-section">
+      <div class="form-group">
+		<div class="form-group-title">Data Sumber</div>
+        <label>Tanggal, Aktivitas, Asal, dan Jenis</label>
+        <div class="status" id="tanggalDanAktivitasStatus">Belum dipilih</div>
+        <div class="link" onclick="window.location.replace('pilih-tanggal-aktivitas-asal-dan-jenis-sumber.html')">Tekan di sini untuk pilih tanggal, aktivitas, asal, dan jenis</div>
+      </div>
+   	</div>
+
+	  <div class="divider"></div>
+
+	<div class="form-section">
+      <div class="form-group">
+		<div class="form-group-title">Data Produksi</div>
+        <label>Tanggal, Petugas, dan Jenis</label>
+        <div class="status" id="asalJenisDanPetugasStatus">Belum dipilih</div>
+        <div class="link" onclick="window.location.replace('pilih-tanggal-petugas-dan-jenis-produksi.html')">Tekan di sini untuk pilih tanggal, petugas, dan jenis</div>
+      </div>
+	</div>
+	  
+	  <div class="divider"></div>
+
+	<div class="form-section">
+      <div class="form-group">
+		<div class="form-group-title">Data Timbangan Produksi</div>
+        <label>Total Timbangan</label>
+        <input type="number" id="totalTimbangan" placeholder="Tulis total timbangan di sini" />
+      </div>
+      <div class="form-group">
+        <label>Total Berat (dalam kg)</label>
+        <input type="number" id="totalBerat" placeholder="Tulis total berat di sini" />
+      </div>
+      <div class="form-group">
+        <label>Total Barang</label>
+        <input type="number" id="totalBarang" placeholder="Tulis total barang di sini" />
+      </div>
+    </div>
+
+    <div class="bottom-divider"></div>
+
+    <div class="upload-link" id="uploadLink">
+      <a href="#" onclick="document.getElementById('cameraInput').click()">Tekan di sini</a> untuk unggah daftar timbangan
+      <input type="file" id="cameraInput" accept="image/*" capture="environment" style="display: none;" onchange="previewImage(event)">
+    </div>
+
+    <div class="image-preview" id="imagePreviewContainer">
+      <img id="previewImage" src="" alt="Preview Foto"/>
+      <div class="delete-image" onclick="removeImage()">Tekan di sini untuk hapus daftar timbangan</div>
+    </div>
+
+  </div>
+
+  <div class="bottom-sheet">
+    <button class="submit-button">Simpan ke DB</button>
+  </div>
+
+  <script>
+    
+	// Tambahan per tgl 28 Mei 2025	
+	// Ambil data dari localStorage
+	const data_tgl_aktv = localStorage.getItem('data_tgl_sumber_pbp_1') + ', ' + localStorage.getItem('data_aktv_pbp_1') + ', ' + localStorage.getItem('data_asl_pbp_1') + ', ' + localStorage.getItem('data_jns_sumber_pbp_1');
+	const data_asl_jns_ptgs = localStorage.getItem('data_tgl_prod_pbp_1') + ', ' + localStorage.getItem('data_ptgs_pbp_1') + ', ' + localStorage.getItem('data_jns_prod_pbp_1');
+    const statusEl_1 = document.getElementById('tanggalDanAktivitasStatus');
+	const statusEl_2 = document.getElementById('asalJenisDanPetugasStatus');
+	statusEl_1.textContent = (data_tgl_aktv !== 'null, null, null, null') ? data_tgl_aktv : 'Belum dipilih'
+	statusEl_2.textContent = (data_asl_jns_ptgs !== 'null, null, null') ? data_asl_jns_ptgs : 'Belum dipilih';
+    // Atur format teks
+	if (statusEl_1.textContent != 'Belum dipilih') {
+      statusEl_1.style.color = '#1f3b2c';
+      statusEl_1.style.fontWeight = '600';
+    }
+	if (statusEl_2.textContent != 'Belum dipilih') {
+      statusEl_2.style.color = '#1f3b2c';
+      statusEl_2.style.fontWeight = '600';
+    }
+	// Tambahan per tgl 28 Mei 2025
+	
+    function previewImage(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        document.getElementById('previewImage').src = e.target.result;
+        document.getElementById('imagePreviewContainer').style.display = 'block';
+        document.getElementById('uploadLink').style.display = 'none';
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function removeImage() {
+      document.getElementById('previewImage').src = '';
+      document.getElementById('imagePreviewContainer').style.display = 'none';
+      document.getElementById('cameraInput').value = '';
+      document.getElementById('uploadLink').style.display = 'block';
+    }
+	
+	// Tambahan per tgl 28 Mei 2025
+    document.querySelector('.submit-button').addEventListener('click', function () {
+      const total_timbangan = parseFloat(document.getElementById('totalTimbangan').value);
+      const total_berat = parseFloat(document.getElementById('totalBerat').value);
+      const total_barang = parseFloat(document.getElementById('totalBarang').value);
+
+      // Simpan ke localStorage hanya setelah tombol diklik dan user isi form
+      localStorage.setItem('data_tmbg', total_timbangan);
+      localStorage.setItem('data_brt', total_berat);
+      localStorage.setItem('data_brg', total_barang);
+
+      if (
+        data_tgl_aktv === 'null, null, null, null' ||
+        data_asl_jns_ptgs === 'null, null, null' ||
+        isNaN(total_timbangan) ||
+        isNaN(total_berat) ||
+        isNaN(total_barang)
+      ) {
+        alert('Harap lengkapi data sumber, data produksi dan data timbangan produksi terlebih dahulu sebelum menyimpan ke DB.');
+        return;
+      }
+
+      // Proses simpan bisa dilanjutkan di sini
+      //alert('Data berhasil disimpan ke DB!');
+      konfirmasiSimpan();
+    });
+		
+	function konfirmasiSimpan() {
+	  const yakin = confirm("Yakin mau simpan ke DB?");
+	  if (yakin) {
+		// Hapus isi localStorage
+	    // Hapus semua isi localStorage
+	    //localStorage.clear();
+
+	    // Atau kalau hanya mau hapus item tertentu:
+	    localStorage.removeItem('data_tgl_sumber_pbp_1');
+	    localStorage.removeItem('data_aktv_pbp_1');
+	    localStorage.removeItem('data_asl_pbp_1');
+		localStorage.removeItem('data_jns_sumber_pbp_1');
+		
+		localStorage.removeItem('data_tgl_prod_pbp_1');
+		localStorage.removeItem('data_ptgs_pbp_1');
+		localStorage.removeItem('data_jns_prod_pbp_1');
+		
+		localStorage.removeItem('data_tmbg');
+		localStorage.removeItem('data_brt');
+		localStorage.removeItem('data_brg');
+		  
+	    // Redirect ke halaman tujuan
+	    window.location.replace('/mockup/operasional/produksi-bal-pres/produksi-bal-pres.html');
+	  } else {
+	    // Tidak jadi simpan
+	    alert("Penyimpanan dibatalkan.");
+	  }
+	}
+	// Tambahan per tgl 28 Mei 2025
+  </script>
+
+</body>
+</html>
