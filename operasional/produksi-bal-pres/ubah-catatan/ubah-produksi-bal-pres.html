@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ubah Produksi Bal Pres</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f8f6;
+      color: #1f3b2c;
+      animation: fadeIn 0.8s ease-in;
+      padding-bottom: 100px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .top-bar {
+      background-color: #cedace;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      font-weight: 600;
+      color: #264d33;
+      cursor: pointer;
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* IE10+/Edge */
+      user-select: none;         /* Standard */
+      -webkit-touch-callout: none;
+    }
+
+    .top-bar:hover {
+      background-color: #b6c8b6;
+    }
+
+    .top-bar svg {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      stroke: #264d33;
+    }
+
+    .section-title {
+		background-color: #1A48C6;
+      color: white;
+      font-weight: 600;
+      padding: 12px 16px;
+      font-size: 16px;
+    }
+
+    .subsection {
+		/*background-color: #1A48C6;*/
+	      background-color: #143695;
+      color: white;
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+
+    .container {
+      padding: 32px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .form-section {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      font-size: 14px;
+    }
+	
+	.optional-label {
+	  font-weight: 400;
+	  font-size: 12px;
+	  color: #888;
+	  /*margin-left: 6px;*/
+	}
+
+	.form-group-title {
+	  font-size: 24px;
+	  font-weight: 900;
+	  color: #1f3b2c;
+	  padding-bottom: 22px;
+	}
+
+	.optional-label {
+	  font-weight: 400;
+	  font-size: 12px;
+	  color: #888;
+	  /*margin-left: 6px;*/
+	}
+
+    .form-group .status {
+      color: #d0d0d0;
+      font-size: 18px;
+      font-weight: 400;
+    }
+
+    .form-group .link {
+      font-size: 13px;
+      color: #2f7a3e;
+      text-decoration: underline;
+      cursor: pointer;
+      font-weight: 600;
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* IE10+/Edge */
+      user-select: none;         /* Standard */
+      -webkit-touch-callout: none;
+    }
+
+    .divider {
+      border-top: 1px solid #e0e0e0;
+      margin: 12px 0;
+    }
+
+    .nav-link {
+      text-align: center;
+      margin: 4px 0 0;
+      font-size: 14px;
+	  display: none;
+    }
+
+    .nav-link a {
+      color: #2f7a3e;
+      font-weight: 600;
+      text-decoration: underline;
+      cursor: pointer;
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* IE10+/Edge */
+      user-select: none;         /* Standard */
+      -webkit-touch-callout: none;
+    }
+
+    .bottom-divider {
+      border-top: 1px solid #e0e0e0;
+      margin: 12px 0 0;
+	  display: none;
+    }
+
+    .bottom-sheet {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+      padding: 16px;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+    }
+
+    .submit-button {
+      background-color: #3e833f;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+      width: 100%;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .submit-button:hover {
+      background-color: #2f7a3e;
+    }
+	
+	.summary-section {
+	  display: flex;
+	  flex-direction: column;
+	  gap: 32px;
+	  /*padding: 16px;*/
+	}
+
+	.summary-title {
+	  font-size: 24px;
+	  font-weight: 900;
+	  color: #1f3b2c;
+	}
+
+	/*.summary-item .label {
+	  font-size: 14px;
+	  color: #1f3b2c;
+	}*/
+	
+		.data-header-wrapper {
+		  /*align-self: flex-start;*/
+		  text-align: center;
+		  display: none;
+		}
+
+		.data-header {
+		  font-size: 13px;
+		  /*font-weight: 600;*/
+		  color: #1f3b2c;
+		  /*align-self: flex-start;*/
+		  padding-left: 4px;
+		}
+	
+		.data-subheader {
+		  font-size: 12px;
+		  /*font-weight: 500;*/
+		  color: #666;
+		  /*color: #888;*/
+		  padding-left: 4px;
+		  margin-top: 2px;
+		}
+	
+		.data-subheader-2 {
+		  font-size: 11px;              /* lebih kecil dari subheader */
+		  font-weight: 400;             /* lebih ringan */
+		  color: #999;                  /* lebih terang/pudar */
+		  padding-left: 4px;
+		  margin-top: 2px;
+		  line-height: 1.3;             /* bisa lebih rapat */
+		  opacity: 0.85;                /* opsional: membuatnya lebih subtle */
+		}
+
+		.data-box {
+	      border: 1.5px solid #3e833f;
+	      padding: 14px;
+	      border-radius: 8px;
+	      width: 100%;
+	      max-width: 360px;
+	      color: #3e833f;
+	      background-color: white;
+	      cursor: pointer;
+	      transition: background-color 0.3s;
+		  text-align: center;
+	      -webkit-user-select: none; /* Safari */
+	      -moz-user-select: none;    /* Firefox */
+	      -ms-user-select: none;     /* IE10+/Edge */
+	      user-select: none;         /* Standard */
+	      -webkit-touch-callout: none;
+		  display: none;
+		}
+
+		/*.data-box {
+		  border: 1.5px solid #3e833f;
+		  border-radius: 8px;
+		  padding: 12px;
+		  width: 100%;
+		  max-width: 360px;
+		  background-color: white;
+		  color: #3e833f;
+		}*/
+
+		.data-box .main {
+		  font-size: 16px;
+		  font-weight: 600;
+		  margin-bottom: 4px;
+		}
+
+		.data-box .desc {
+		  font-size: 12px;
+		  color: #1f3b2c;
+		  font-weight: 500;
+		}
+
+		.data-box .desc-2 {
+		  font-size: 11px;        /* Lebih kecil */
+		  color: #6f8b7c;         /* Lebih terang/pudar dari #1f3b2c */
+		  /*color: #999;*/
+		  /*color: #bbb;*/
+		  font-weight: 400;       /* Lebih ringan */
+		  opacity: 0.75;          /* Tambah transparansi */
+		}
+	
+  </style>
+</head>
+<body>
+
+  <div class="top-bar" onclick="window.location.replace('/mockup/operasional/produksi-bal-pres/produksi-bal-pres.html')">
+    <svg fill="none" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+    Kembali
+  </div>
+
+  <div class="section-title">Ubah Produksi Bal Pres</div>
+  <div class="subsection">Depok</div>
+
+  <div class="container">
+    <div class="form-section">
+      <div class="form-group">
+		<div class="form-group-title">Data Sumber</div>
+        <label>
+			Tanggal, Aktivitas, Asal, dan Jenis
+			<span class="optional-label">(opsional)</span>
+		</label>
+        <div class="status" id="tanggalDanAktivitasStatus">Belum dipilih</div>
+        <div class="link" onclick="window.location.replace('pilih-tanggal-aktivitas-asal-dan-jenis-sumber.html')">Tekan di sini untuk pilih tanggal, aktivitas, asal, dan jenis</div>
+      </div>
+   	</div>
+
+	  <div class="divider"></div>
+
+	<div class="form-section">
+      <div class="form-group">
+		<div class="form-group-title">Data Produksi</div>
+        <label>Tanggal, Petugas, dan Jenis</label>
+        <div class="status" id="asalJenisDanPetugasStatus">Belum dipilih</div>
+        <div class="link" onclick="window.location.replace('pilih-tanggal-petugas-dan-jenis-produksi.html')">Tekan di sini untuk pilih tanggal, petugas, dan jenis</div>
+      </div>
+	</div>
+
+    <div class="divider"></div>
+
+	<div class="summary-section">
+	  <div class="summary-title">Pilih Daftar Timbangan Produksi</div>
+	</div>
+	
+  <!-- Baris Judul -->
+  <div class="data-header-wrapper" id="data-header-w">
+  	  <div class="data-header">ID • Tot. Timbangan • Berat • Barang Produksi</div>
+	  <div class="data-subheader">Petugas • Jenis Produksi</div>
+  	  <div class="data-subheader-2">Aktivitas • Asal • Jenis Sumber</div>
+  </div>
+
+  <!-- Daftar Item -->
+  <div class="data-box" id="data-box-1" onclick="window.location.replace('ubah-daftar-timbangan.html')">
+      <div class="main">#1 • 2 • 200 kg • 100</div>
+      <div class="desc">Indria • Bal, PET Merah</div>
+	  <div class="desc-2">Harian • Mamat • Bal, PET Mix</div>
+  </div>
+  <div class="data-box" id="data-box-2">
+      <div class="main">#2 • 2 • 200 kg • 100</div>
+	  <div class="desc">Bal, PET Merah</div>
+      <div class="desc-2">Harian</div>
+  </div>
+  <div class="data-box" id="data-box-3">
+      <div class="main">#3 • 2 • 200 kg • 100</div>
+	  <div class="desc">Bal, PET Merah</div>
+      <div class="desc-2"></div>
+  </div>
+  <div class="data-box" id="data-box-4">
+      <div class="main">#4 • 2 • 200 kg • 100</div>
+      <div class="desc"></div>
+	  <div class="desc-2">Bal, PET Mix</div>
+  </div>
+    
+    <div class="bottom-divider" id="bot-dev"></div>
+
+    <div class="nav-link" id="nav-before">
+      <a href="#">Tekan di sini</a> untuk muat sebelumnya
+    </div>
+
+    <div class="nav-link" id="nav-after">
+      <a href="#">Tekan di sini</a> untuk muat selanjutnya
+    </div>
+	
+  </div>
+
+  <div class="bottom-sheet">
+    <button class="submit-button">Cari ke DB</button>
+  </div>
+
+  <script>
+    
+	// Tambahan per tgl 28 Mei 2025
+    //localStorage.removeItem('data_tgl_2');
+    //localStorage.removeItem('data_aktv_2');
+	// Fungsi untuk membersihkan teks "Belum dipilih" dan merapikan koma
+	function bersihkanStatus(statusStr) {
+	  if (!statusStr || statusStr.includes('null')) return 'Belum dipilih';
+	  return statusStr
+	  	.split(',')
+	  	.map(item => item.trim())
+	  	.filter(item => item !== 'Belum dipilih')
+	  	.join(', ') || 'Belum dipilih';
+	}
+	  	
+	// Ambil data dari localStorage
+	const data_tgl_aktv = localStorage.getItem('data_tgl_sumber_pbp_3') + ', ' + localStorage.getItem('data_aktv_pbp_3') + ', ' + localStorage.getItem('data_asl_pbp_3') + ', ' + localStorage.getItem('data_jns_sumber_pbp_3');
+	const data_asl_jns_ptgs = localStorage.getItem('data_tgl_prod_pbp_3') + ', ' + localStorage.getItem('data_ptgs_pbp_3') + ', ' + localStorage.getItem('data_jns_prod_pbp_3');
+    const statusEl_1 = document.getElementById('tanggalDanAktivitasStatus');
+	const statusEl_2 = document.getElementById('asalJenisDanPetugasStatus');
+	statusEl_1.textContent = bersihkanStatus(data_tgl_aktv);
+	statusEl_2.textContent = bersihkanStatus(data_asl_jns_ptgs);
+    // Atur format teks
+	if (statusEl_1.textContent != 'Belum dipilih') {
+      statusEl_1.style.color = '#1f3b2c';
+      statusEl_1.style.fontWeight = '600';
+    }
+	if (statusEl_2.textContent != 'Belum dipilih') {
+      statusEl_2.style.color = '#1f3b2c';
+      statusEl_2.style.fontWeight = '600';
+    }
+
+    document.querySelector('.submit-button').addEventListener('click', function () {
+      
+      if (
+        data_asl_jns_ptgs === 'null, null, null'
+      ) {
+        alert('Harap lengkapi tanggal produksi terlebih dahulu sebelum cari ke DB.');
+        return;
+      }
+
+	  // Proses query data ke DB
+  	  document.getElementById('data-header-w').style.display = 'block';
+	  document.getElementById('data-box-1').style.display = 'block';
+	  document.getElementById('data-box-2').style.display = 'block';
+	  document.getElementById('data-box-3').style.display = 'block';
+	  document.getElementById('data-box-4').style.display = 'block';
+	  document.getElementById('bot-dev').style.display = 'block';
+	  document.getElementById('nav-after').style.display = 'block';
+
+      // Proses simpan bisa dilanjutkan di sini
+      //alert('Data berhasil disimpan ke DB!');
+
+    });	
+	// Tambahan per tgl 28 Mei 2025
+  </script>
+
+</body>
+</html>
