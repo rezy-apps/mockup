@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pilih Pembeli, Jenis, dan Petugas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f8f6;
+      color: #1f3b2c;
+      animation: fadeIn 0.8s ease-in;
+      padding-bottom: 140px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .top-bar {
+      background-color: #cedace;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      font-weight: 600;
+      color: #264d33;
+      cursor: pointer;
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* IE10+/Edge */
+      user-select: none;         /* Standard */
+      -webkit-touch-callout: none;
+    }
+
+    .top-bar svg {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      stroke: #264d33;
+    }
+
+    .section-title {
+		background-color: #7E00A1;
+
+      color: white;
+      font-weight: 600;
+      padding: 12px 16px;
+      font-size: 16px;
+    }
+
+    .subsection {
+		/*background-color: #7E00A1;*/
+		  background-color: #5F0079;
+      color: white;
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+
+    .container {
+      padding: 32px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .form-section {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      font-size: 14px;
+    }
+	
+	.optional-label {
+	  font-weight: 400;
+	  font-size: 12px;
+	  color: #888;
+	  /*margin-left: 6px;*/
+	}
+
+    .form-group .status {
+      color: #d0d0d0;
+      font-size: 18px;
+      font-weight: 400;
+    }
+
+    .form-group .link {
+      font-size: 13px;
+      color: #2f7a3e;
+      text-decoration: underline;
+      cursor: pointer;
+      font-weight: 600;
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* IE10+/Edge */
+      user-select: none;         /* Standard */
+      -webkit-touch-callout: none;
+    }
+    
+    .bottom-sheet {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+      padding: 24px 16px;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      text-align: center;
+    }
+
+    .reset-button {
+      background-color: white;
+      border: 1.5px solid #3e833f;
+      color: #3e833f;
+      border-radius: 6px;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      width: 100%;
+      cursor: pointer;
+      margin-bottom: 12px;
+    }
+
+    .submit-button {
+      background-color: #3e833f;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      width: 100%;
+      cursor: pointer;
+      margin-top: 12px;
+    }
+
+    .atau {
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar" onclick="window.location.replace('ubah-stok-keluar.html')">
+    <svg fill="none" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+    Kembali
+  </div>
+
+  <div class="section-title">Pilih Pembeli, Jenis, dan Petugas</div>
+  <div class="subsection">Depok</div>
+
+  <div class="container">
+    <div class="form-section">
+      <div class="form-group">
+        <label>
+			Pembeli
+			<span class="optional-label">(opsional)</span>
+		</label>
+        <div class="status" id="asalStatus">Belum dipilih</div>
+        <div class="link" onclick="sendData_Asal()">Tekan di sini untuk pilih pembeli</div>
+      </div>
+
+      <div class="form-group">
+        <label>
+			Jenis
+			<span class="optional-label">(opsional)</span>
+		</label>
+        <div class="status" id="jenisStatus">Belum dipilih</div>
+        <div class="link" onclick="sendData_Jenis()">Tekan di sini untuk pilih jenis</div>
+      </div>
+      
+      <div class="form-group">
+        <label>
+			Petugas
+			<span class="optional-label">(opsional)</span>
+		</label>
+        <div class="status" id="petugasStatus">Belum dipilih</div>
+        <div class="link" onclick="sendData_Petugas()">Tekan di sini untuk pilih petugas</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-sheet">
+    <button class="reset-button" onclick="reset()">Reset</button>
+    <div class="atau">atau</div>
+    <button class="submit-button">Simpan</button>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const asal = params.get('asl');
+    const jenis = params.get('jns');
+    const petugas = params.get('ptgs');
+    const statusEl_1 = document.getElementById('asalStatus');
+    const statusEl_2 = document.getElementById('jenisStatus');
+    const statusEl_3 = document.getElementById('petugasStatus');
+    statusEl_1.textContent = asal || 'Belum dipilih';
+    statusEl_2.textContent = jenis || 'Belum dipilih';
+    statusEl_3.textContent = petugas || 'Belum dipilih';
+    if (statusEl_1.textContent != 'Belum dipilih') {
+      statusEl_1.style.color = '#1f3b2c';
+      statusEl_1.style.fontWeight = '600';
+    }
+    if (statusEl_2.textContent != 'Belum dipilih') {
+      statusEl_2.style.color = '#1f3b2c';
+      statusEl_2.style.fontWeight = '600';
+    }
+    if (statusEl_3.textContent != 'Belum dipilih') {
+      statusEl_3.style.color = '#1f3b2c';
+      statusEl_3.style.fontWeight = '600';
+    }
+    
+    function sendData_Asal() {
+      const value_1 = document.getElementById('asalStatus').innerText; // or textContent
+      const value_2 = document.getElementById('jenisStatus').innerText; // or textContent
+      const value_3 = document.getElementById('petugasStatus').innerText; // or textContent
+      const url = `pilih-pembeli.html?asl=${encodeURIComponent(value_1)}&jns=${encodeURIComponent(value_2)}&ptgs=${encodeURIComponent(value_3)}`;
+	  window.location.replace(url);
+    }
+
+    function sendData_Jenis() {
+      const value_1 = document.getElementById('asalStatus').innerText; // or textContent
+      const value_2 = document.getElementById('jenisStatus').innerText; // or textContent
+      const value_3 = document.getElementById('petugasStatus').innerText; // or textContent
+      const url = `pilih-bentuk.html?asl=${encodeURIComponent(value_1)}&jns=${encodeURIComponent(value_2)}&ptgs=${encodeURIComponent(value_3)}`;
+	  window.location.replace(url);
+    }
+
+    function sendData_Petugas() {
+      const value_1 = document.getElementById('asalStatus').innerText; // or textContent
+      const value_2 = document.getElementById('jenisStatus').innerText; // or textContent
+      const value_3 = document.getElementById('petugasStatus').innerText; // or textContent
+      const url = `pilih-petugas.html?asl=${encodeURIComponent(value_1)}&jns=${encodeURIComponent(value_2)}&ptgs=${encodeURIComponent(value_3)}`;
+      window.location.replace(url);
+    }
+
+    function reset() {
+      const statusEl_1 = document.getElementById('asalStatus');
+      const statusEl_2 = document.getElementById('jenisStatus');
+      const statusEl_3 = document.getElementById('petugasStatus');
+      statusEl_1.textContent = 'Belum dipilih';
+      statusEl_2.textContent = 'Belum dipilih';
+      statusEl_3.textContent = 'Belum dipilih';
+      statusEl_1.style.color = '#d0d0d0';
+      statusEl_2.style.color = '#d0d0d0';
+      statusEl_3.style.color = '#d0d0d0';
+      statusEl_1.style.fontWeight = '400';
+      statusEl_2.style.fontWeight = '400';
+      statusEl_3.style.fontWeight = '400';
+    }
+
+    document.querySelector('.submit-button').addEventListener('click', function () {
+      const asal = document.getElementById('asalStatus').innerText;
+      const jenis = document.getElementById('jenisStatus').innerText;
+      const petugas = document.getElementById('petugasStatus').innerText;
+    
+      /*if (asal === 'Belum dipilih' || jenis === 'Belum dipilih' || petugas === 'Belum dipilih') {
+        alert('Harap lengkapi asal, jenis, dan petugas terlebih dahulu sebelum menyimpan.');
+        return;
+      }*/
+    
+      // Proses simpan bisa dilanjutkan di sini
+      //alert('Data berhasil disimpan!');
+	  
+	  // Tambahan per tgl 28 Mei 2025
+	  // Simpan data ke localStorage
+      localStorage.setItem('data_asl_out_3', asal);
+	  localStorage.setItem('data_jns_out_3', jenis);
+	  localStorage.setItem('data_ptgs_out_3', petugas);
+	  // Arahkan ke halaman tambah-stok-masuk
+	  window.location.replace('ubah-stok-keluar.html')
+	  // Tambahan per tgl 28 Mei 2025
+	  
+    });
+  </script>
+
+</body>
+</html>

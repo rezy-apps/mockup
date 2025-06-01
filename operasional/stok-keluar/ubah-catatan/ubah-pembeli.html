@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ubah Pembeli</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f8f6;
+      color: #1f3b2c;
+      animation: fadeIn 0.8s ease-in;
+      padding-bottom: 32px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .top-bar {
+      background-color: #cedace;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      font-weight: 600;
+      color: #264d33;
+      cursor: pointer;
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* IE10+/Edge */
+      user-select: none;         /* Standard */
+      -webkit-touch-callout: none;
+    }
+
+    .top-bar svg {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      stroke: #264d33;
+    }
+
+    .section-title {
+		background-color: #7E00A1;
+      color: white;
+      font-weight: 600;
+      padding: 12px 16px;
+      font-size: 16px;
+    }
+
+    .subsection {
+		/*background-color: #7E00A1;*/
+		  background-color: #5F0079;
+      color: white;
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+
+    .container {
+      padding: 32px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      align-items: center;
+      text-align: left;
+    }
+
+    .button-option {
+      border: 1.5px solid #3e833f;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      width: 100%;
+      max-width: 360px;
+      color: #3e833f;
+      background-color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .desc {
+      margin-top: -30px;
+      color: #555;
+      font-size: 11px;
+      max-width: 360px;
+      text-align: left;
+    }
+
+    .divider {
+      border-top: 1px solid #e0e0e0;
+      margin: 12px 0;
+      align-self: stretch;
+      width: 100%;
+    }
+
+    .bottom-divider {
+      border-top: 1px solid #e0e0e0;
+      margin: 12px 0 0;
+      align-self: stretch;
+      width: 100%;
+    }
+
+    .upload-link {
+      text-align: center;
+      margin: 4px 0 0;
+      font-size: 14px;
+    }
+
+    .upload-link a {
+      color: #2f7a3e;
+      font-weight: 600;
+      text-decoration: underline;
+      cursor: pointer;
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* IE10+/Edge */
+      user-select: none;         /* Standard */
+      -webkit-touch-callout: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar" onclick="sendDataBack()">
+    <svg fill="none" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+    Kembali
+  </div>
+
+  <div class="section-title">Ubah Pembeli</div>
+  <div class="subsection">Depok, 22-Mei-2025, PT Baru Subuh, Karung, PET Biru, Indra</div>
+
+  <div class="container">
+    
+    <button class="button-option" onclick="sendData(this)">PT X</button>
+    <button class="button-option" onclick="sendData(this)">PT Y</button>
+    <button class="button-option" onclick="sendData(this)">PT Z</button>
+    <button class="button-option" onclick="sendData(this)">Kantor Cibubur</button>
+    <button class="button-option" onclick="sendData(this)">Orang Kaya</button>
+
+    <div class="bottom-divider"></div>
+    
+    <div class="upload-link">
+      <a href="#">Tekan di sini</a> untuk muat sebelumnya
+    </div>
+
+    <div class="upload-link">
+      <a href="#">Tekan di sini</a> untuk muat selanjutnya
+    </div>
+  </div>
+
+  <script>
+    function sendData(button) {
+      const value = button.innerText; // Or button.textContent
+      const params = new URLSearchParams(window.location.search);
+	  const tanggal = params.get('tgl') || 'Belum dipilih';
+      const jenis = params.get('jns') || 'Belum dipilih';
+      const petugas = params.get('ptgs') || 'Belum dipilih';
+      const url = `ubah-tanggal-pembeli-jenis-dan-petugas.html?tgl=${encodeURIComponent(tanggal)}&asl=${encodeURIComponent(value)}&jns=${encodeURIComponent(jenis)}&ptgs=${encodeURIComponent(petugas)}`;
+      window.location.replace(url);
+    }
+
+    function sendDataBack() {
+      const params = new URLSearchParams(window.location.search);
+	  const tanggal = params.get('tgl') || 'Belum dipilih';
+      const asal = params.get('asl') || 'Belum dipilih';
+      const jenis = params.get('jns') || 'Belum dipilih';
+      const petugas = params.get('ptgs') || 'Belum dipilih';
+      const url = `ubah-tanggal-pembeli-jenis-dan-petugas.html?tgl=${encodeURIComponent(tanggal)}&asl=${encodeURIComponent(asal)}&jns=${encodeURIComponent(jenis)}&ptgs=${encodeURIComponent(petugas)}`;
+      window.location.replace(url);
+    }
+  </script>
+  
+</body>
+</html>
