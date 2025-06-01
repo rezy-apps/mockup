@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sebaran Jenis Bal Opnam dan Hitungan Lengkap</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f8f6;
+      color: #1f3b2c;
+      animation: fadeIn 0.8s ease-in;
+      padding-bottom: 32px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .top-bar {
+      background-color: #cedace;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      font-weight: 600;
+      color: #264d33;
+      cursor: pointer;
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* IE10+/Edge */
+      user-select: none;         /* Standard */
+      -webkit-touch-callout: none;
+    }
+
+    .top-bar svg {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      stroke: #264d33;
+    }
+
+    .section-title {
+		background-color: #CA0080;
+      color: white;
+      font-weight: 600;
+      padding: 12px 16px;
+      font-size: 16px;
+    }
+
+    .subsection {
+		/*background-color: #CA0080;*/
+	      background-color: #980060;
+      color: white;
+      padding: 8px 16px;
+      font-size: 13px;
+    }
+
+    .container {
+      padding: 32px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      align-items: center;
+      text-align: left;
+    }
+
+    /*.button-option {
+      border: 1.5px solid #3e833f;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      width: 100%;
+      max-width: 360px;
+      color: #3e833f;
+      background-color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }*/
+
+	.data-header-wrapper {
+	  align-self: flex-start;
+	}
+
+	.data-header {
+	  font-size: 13px;
+	  /*font-weight: 600;*/
+	  color: #1f3b2c;
+	  /*align-self: flex-start;*/
+	}
+	
+	.data-subheader {
+	  font-size: 12px;
+	  /*font-weight: 500;*/
+	  color: #666;
+	  /*color: #888;*/
+	  margin-top: 2px;
+	}
+
+    .divider {
+      border-top: 1px solid #e0e0e0;
+      margin: 12px 0;
+      align-self: stretch;
+      width: 100%;
+    }
+
+    .bottom-divider {
+      border-top: 1px solid #e0e0e0;
+      margin: 12px 0 0;
+      align-self: stretch;
+      width: 100%;
+    }
+
+    .nav-link {
+      text-align: center;
+      margin: 4px 0 0;
+      font-size: 14px;
+    }
+
+    .nav-link a {
+      color: #2f7a3e;
+      font-weight: 600;
+      text-decoration: underline;
+      cursor: pointer;
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* IE10+/Edge */
+      user-select: none;         /* Standard */
+      -webkit-touch-callout: none;
+    }
+	
+	
+	.group-data-item {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+	  width: 100%;
+	}
+	
+	.data-item {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+	}
+	
+	
+	.progress-bar-group {
+  	  display: flex;
+	  flex-direction: column;
+	  margin-top: 6px;
+	  margin-bottom: 4px;
+	  gap: 2px;
+	}
+	
+	.progress-bar {
+	  display: flex;
+	  height: 12px;
+	  border-radius: 6px;
+	  overflow: hidden;
+	  background-color: #e0e0e0;
+	}
+
+	.bar {
+	  height: 100%;
+	}
+	
+	.bar-1 {
+	  background-color: #3e833f;
+	}
+	
+	.bar-2 {
+	  background-color: #E69940;
+	}
+	
+	.legend {
+	  font-size: 13px;
+	  color: #1f3b2c;
+	}
+  </style>
+</head>
+<body>
+  <div class="top-bar" onclick="window.location.replace('pilih-data-stok-opnam.html')">
+    <svg fill="none" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+    Kembali
+  </div>
+
+  <div class="section-title">Sebaran Jenis Bal Opnam dan Hitungan Lengkap</div>
+  <div class="subsection" id="dataSubsection">Depok, 01-Mei-2025</div>
+
+  <div class="container">
+	
+	  <!-- Baris Judul -->
+	  <div class="data-header-wrapper">
+	  	  <div class="data-header">Jenis Bal • % Opnam / Hitungan • Berat Opnam / Hitungan</div>
+	  </div>
+
+	  <!-- Daftar Item -->
+	 <div class="group-data-item">
+	  <div class="data-item">
+		<div class="progress-bar-group">
+	    	<div class="progress-bar">
+	      	  <div class="bar-1" id="dataBar-1" style="width: 40%"></div>
+	    	</div>
+	    	<div class="progress-bar">
+	      	  <div class="bar-2" id="dataBar-1-2" style="width: 50%"></div>
+	    	</div>
+	    </div>
+		<div class="legend" id="dataLgd-1">PET Mix • 40 / 50% • 400 / 500 kg</div>
+	  </div>
+	  
+	  <div class="data-item">
+		<div class="progress-bar-group">
+	    	<div class="progress-bar">
+	      	  <div class="bar-1" id="dataBar-2" style="width: 26%"></div>
+	    	</div>
+	    	<div class="progress-bar">
+	      	  <div class="bar-2" id="dataBar-2-2" style="width: 30%"></div>
+	    	</div>
+	    </div>
+	    <div class="legend" id="dataLgd-2">PET Bening • 26 / 30% • 260 / 300 kg</div>
+	  </div>
+	  
+	  <div class="data-item">
+		<div class="progress-bar-group">
+	    	<div class="progress-bar">
+	      	  <div class="bar-1" id="dataBar-3" style="width: 16%"></div>
+	    	</div>
+	    	<div class="progress-bar">
+	      	  <div class="bar-2" id="dataBar-3-2" style="width: 20%"></div>
+	    	</div>
+	    </div>
+	    <div class="legend" id="dataLgd-3">PET Biru • 16 / 20% • 160 / 200 kg</div>
+	  </div>
+	  
+	  <div class="data-item">
+		<div class="progress-bar-group">
+	    	<div class="progress-bar">
+	      	  <div class="bar-1" id="dataBar-4" style="width: 1%"></div>
+	    	</div>
+	    	<div class="progress-bar">
+	      	  <div class="bar-2" id="dataBar-4-2" style="width: 5%"></div>
+	    	</div>
+	    </div>
+	    <div class="legend" id="dataLgd-4">PET Dove • 1 / 5% • 10 / 50 kg</div>
+	  </div>
+  	 </div>
+	  
+	  
+	<div class="bottom-divider"></div>
+    
+    <div class="nav-link">
+      <a href="#">Tekan di sini</a> untuk muat sebelumnya
+    </div>
+
+    <div class="nav-link">
+      <a href="#">Tekan di sini</a> untuk muat selanjutnya
+    </div>
+  </div>
+
+  <script>	
+  </script>
+  
+</body>
+</html>

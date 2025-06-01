@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dasbor Stok Opnam</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f8f6;
+      color: #1f3b2c;
+      animation: fadeIn 0.8s ease-in;
+      padding-bottom: 100px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .top-bar {
+      background-color: #cedace;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      font-weight: 600;
+      color: #264d33;
+      cursor: pointer;
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* IE10+/Edge */
+      user-select: none;         /* Standard */
+      -webkit-touch-callout: none;
+    }
+
+    .top-bar:hover {
+      background-color: #b6c8b6;
+    }
+
+    .top-bar svg {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      stroke: #264d33;
+    }
+
+    .section-title {
+		background-color: #CA0080;
+      color: white;
+      font-weight: 600;
+      padding: 12px 16px;
+      font-size: 16px;
+    }
+
+    .subsection {
+		/*background-color: #CA0080;*/
+	      background-color: #980060;
+      color: white;
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+
+    .container {
+      padding: 32px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .form-section {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      font-size: 14px;
+    }
+	
+	.optional-label {
+	  font-weight: 400;
+	  font-size: 12px;
+	  color: #888;
+	  /*margin-left: 6px;*/
+	}
+
+    .form-group .status {
+      color: #d0d0d0;
+      font-size: 18px;
+      font-weight: 400;
+    }
+
+    .form-group .link-group {
+      font-size: 13px;
+      /*font-weight: 600;*/
+      display: flex;
+      flex-direction: column;
+	  gap: 24px;
+    }
+	
+    .form-group .link {
+      font-size: 13px;
+      color: #2f7a3e;
+      text-decoration: underline;
+      cursor: pointer;
+      font-weight: 600;
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* IE10+/Edge */
+      user-select: none;         /* Standard */
+      -webkit-touch-callout: none;
+    }
+	
+    .divider {
+      border-top: 1px solid #e0e0e0;
+      margin: 12px 0;
+    }
+
+    .action-link {
+      text-align: center;
+      margin: 4px 0 0;
+      font-size: 14px;
+	  
+	  display: none;
+    }
+
+    .action-link a {
+      color: #2f7a3e;
+      font-weight: 600;
+      text-decoration: underline;
+      cursor: pointer;
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* IE10+/Edge */
+      user-select: none;         /* Standard */
+      -webkit-touch-callout: none;
+    }
+
+    .bottom-divider {
+      border-top: 1px solid #e0e0e0;
+      margin: 12px 0 0;
+	  
+	  display: none;
+    }
+
+    .bottom-sheet {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+      padding: 16px;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+    }
+
+    .submit-button {
+      background-color: #3e833f;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+      width: 100%;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .submit-button:hover {
+      background-color: #2f7a3e;
+    }
+	
+	.summary-section {
+	  display: flex;
+	  flex-direction: column;
+	  gap: 32px;
+	  /*padding: 16px;*/
+	}
+
+	.summary-title {
+	  font-size: 24px;
+	  font-weight: 900;
+	  color: #1f3b2c;
+	}
+
+	/*.summary-item .label {
+	  font-size: 14px;
+	  color: #1f3b2c;
+	}*/
+	
+	.summary-item {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+	}
+	
+    .summary-item label {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+	.summary-item .value {
+	  /*font-size: 20px;*/
+	  font-size: 18px;
+	  font-weight: 600;
+	  /*color: #1f3b2c;*/
+	  /*margin-top: 6px;*/
+	}
+	
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 24px;
+      border-radius: 12px;
+      text-align: center;
+      width: 80%;
+    }
+
+    .modal-content input[type="date"] {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 12px;
+      width: 100%;
+    }
+
+    .modal-content button {
+      margin-top: 16px;
+      background-color: #3e833f;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+	
+	.legend {
+	  font-size: 13px;
+	  color: #1f3b2c;
+	}
+	
+  </style>
+</head>
+<body>
+
+  <div class="top-bar" onclick="window.location.replace('/mockup/dasbor/pilih-dasbor.html')">
+    <svg fill="none" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+    Kembali
+  </div>
+
+  <div class="section-title">Dasbor Stok Opnam</div>
+  <div class="subsection">Depok</div>
+
+  <div class="container">
+    <div class="form-section">
+      <div class="form-group">
+        <label>Tanggal</label>
+        <div class="status" id="tanggalStatus">Belum dipilih</div>
+        <div class="link" onclick="bukaPopupTanggal()">Tekan di sini untuk pilih tanggal</div>
+      </div>
+
+      <div class="form-group">
+        <label>Jenis
+			<span class="optional-label">(opsional)</span>
+		</label>
+        <div class="status" id="asalJenisDanPetugasStatus">Belum dipilih</div>
+		<div class='link-group'>
+        	<div class="link" onclick="window.location.replace('pilih-bentuk.html')">Tekan di sini untuk pilih jenis</div> 
+			<div class="atau"> atau </div>
+			<div class="link" onclick="reset()">Tekan di sini untuk reset jenis</div>
+		</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+	<div class="summary-section">
+	  <div class="summary-title">Ringkasan</div>
+	  <div class="summary-item">
+	    <label>Total Berat Bal Opnam / Hitungan</label>
+	    <div class="value">
+			<span id="dataBrt-1-1">0</span> 
+			<span id="dataBrt-1-2">/ 0 kg</span>
+		</div>
+		<div class="legend" id="dataLgdPetugas-1">Belum ada opnam</div>
+	  </div>
+	  
+	  <div class="summary-item">
+	    <label>Total Berat Karung Opnam / Hitungan</label>
+	    <div class="value">
+			<span id="dataBrt-2-1">0</span> 
+			<span id="dataBrt-2-2">/ 0 kg</span>
+	    </div>
+		<div class="legend" id="dataLgdPetugas-2">Belum ada opnam</div>
+	  </div>
+	</div>
+    
+    <div class="bottom-divider"></div>
+
+    <div class="action-link">
+      <a href="#" onclick="lihatSelengkapnya()">Tekan di sini</a> untuk lihat selengkapnya
+    </div>
+
+    <div class="bottom-divider"></div>
+	
+    <div class="action-link">
+      <a href="#" onclick="bukaInputEmail()">Tekan di sini</a> untuk kirim data ke email dan olah data yang lebih maksimal
+    </div>
+    
+  </div>
+
+  <div class="bottom-sheet">
+    <button class="submit-button">Cari ke DB</button>
+  </div>
+
+  <div class="modal" id="tanggalModal">
+    <div class="modal-content">
+      <h3>Pilih Tanggal</h3>
+      <input type="date" id="tanggalPicker">
+      <button onclick="simpanTanggal()">Simpan</button>
+    </div>
+  </div>
+
+  <script>
+    
+      function bukaPopupTanggal() {
+        document.getElementById('tanggalModal').style.display = 'flex';
+      }
+
+      function simpanTanggal() {
+        const tanggal = document.getElementById('tanggalPicker').value;
+        if (tanggal) {
+          const [yyyy, mm, dd] = tanggal.split("-");
+          switch (mm) {
+            case '01':
+              mmm = 'Jan';
+              break;
+            case '02':
+              mmm = 'Feb';
+              break;
+            case '03':
+              mmm = 'Mar';
+              break;
+            case '04':
+              mmm = 'Apr';
+              break;
+            case '05':
+              mmm = 'Mei';
+              break;
+            case '06':
+              mmm = 'Jun';
+              break;
+            case '07':
+              mmm = 'Jul';
+              break;
+            case '08':
+              mmm = 'Agu';
+              break;
+            case '09':
+              mmm = 'Sep';
+              break;
+            case '10':
+              mmm = 'Okt';
+              break;
+            case '11':
+              mmm = 'Nov';
+              break;
+            case '12':
+              mmm = 'Des';
+          }
+          const formatted = `${dd}-${mmm}-${yyyy}`;
+          const statusEl = document.getElementById('tanggalStatus');
+          statusEl.innerText = formatted;
+          statusEl.style.color = '#1f3b2c';
+          statusEl.style.fontWeight = '600';
+		
+  		//Salin ke localStorage
+  		localStorage.setItem('data_tgl_dsb_op', formatted);
+        }
+        document.getElementById('tanggalModal').style.display = 'none';
+      }
+	
+	// Tambahan per tgl 28 Mei 2025
+    //localStorage.removeItem('data_tgl_op_2');
+    //localStorage.removeItem('data_aktv_2');
+	// Fungsi untuk membersihkan teks "Belum dipilih" dan merapikan koma
+	function bersihkanStatus(statusStr) {
+	  if (!statusStr || statusStr.includes('null')) return 'Belum dipilih';
+	  return statusStr
+	  	.split(',')
+	  	.map(item => item.trim())
+	  	.filter(item => item !== 'Belum dipilih')
+	  	.join(', ') || 'Belum dipilih';
+	}
+	  	
+	// Ambil data dari localStorage
+	const data_tgl = localStorage.getItem('data_tgl_dsb_op');
+	const data_asl_jns_ptgs = localStorage.getItem('data_jns_dsb_op');
+    const statusEl_1 = document.getElementById('tanggalStatus');
+	const statusEl_2 = document.getElementById('asalJenisDanPetugasStatus');
+	statusEl_1.textContent = bersihkanStatus(data_tgl);
+	statusEl_2.textContent = bersihkanStatus(data_asl_jns_ptgs);
+    // Atur format teks
+	if (statusEl_1.textContent != 'Belum dipilih') {
+      statusEl_1.style.color = '#1f3b2c';
+      statusEl_1.style.fontWeight = '600';
+    }
+	if (statusEl_2.textContent != 'Belum dipilih') {
+      statusEl_2.style.color = '#1f3b2c';
+      statusEl_2.style.fontWeight = '600';
+    }
+
+
+	// fungsi ubah format tanggal
+	function parseTanggalIndonesia(tanggalStr) {
+	  const bulanMap = {
+	    'Jan': 0,
+	    'Feb': 1,
+	    'Mar': 2,
+	    'Apr': 3,
+	    'Mei': 4,
+	    'Jun': 5,
+	    'Jul': 6,
+	    'Agu': 7,
+	    'Sep': 8,
+	    'Okt': 9,
+	    'Nov': 10,
+	    'Des': 11
+	  };
+
+	  const [tgl, bln, thn] = tanggalStr.split('-');
+	  const bulanIndex = bulanMap[bln];
+
+	  return new Date(thn, bulanIndex, tgl); // format: YYYY, MM (0-indexed), DD
+	}
+
+    document.querySelector('.submit-button').addEventListener('click', function () {
+      
+	  const data_tgl = localStorage.getItem('data_tgl_dsb_op');
+	  
+      if (
+        !data_tgl || data_tgl === 'null'
+      ) {
+        alert('Harap lengkapi tanggal terlebih dahulu sebelum cari ke DB.');
+        return;
+      }
+
+	  // logic cek tanggal
+	  const tanggalTertentu = '24-Jun-2025';
+
+	  const date1 = parseTanggalIndonesia(data_tgl);
+	  const date2 = parseTanggalIndonesia(tanggalTertentu);
+
+	  if (date1.getTime() !== date2.getTime()) {
+		  // Proses query data ke DB
+	  	  document.getElementById('dataBrt-1-1').textContent = 'Belum Opnam';
+		  document.getElementById('dataBrt-1-1').style.color = '#D20A2E';
+		  document.getElementById('dataBrt-1-2').textContent = '/ 240 kg';
+	  	  document.getElementById('dataLgdPetugas-1').textContent = 'Terakhir opnam 30-Apr-2025';
+
+	  	  document.getElementById('dataBrt-2-1').textContent = 'Belum Opnam';
+		  document.getElementById('dataBrt-2-1').style.color = '#D20A2E';
+		  document.getElementById('dataBrt-2-2').textContent = '/ 4100 kg';
+	  	  document.getElementById('dataLgdPetugas-2').textContent = 'Terakhir opnam 30-Apr-2025';
+	  } else {
+		  // Proses query data ke DB
+	  	  document.getElementById('dataBrt-1-1').textContent = '190';
+		  document.getElementById('dataBrt-1-1').style.color = '#1f3b2c';
+		  document.getElementById('dataBrt-1-2').textContent = '/ 240 kg';
+	  	  document.getElementById('dataLgdPetugas-1').textContent = 'Opnam sebelumnya 30-Apr-2025';
+		  //D20A2E kode warna merah yang benar
+
+	  	  document.getElementById('dataBrt-2-1').textContent = '400';
+		  document.getElementById('dataBrt-2-1').style.color = '#1f3b2c';
+		  document.getElementById('dataBrt-2-2').textContent = '/ 4100 kg';
+	  	  document.getElementById('dataLgdPetugas-2').textContent = 'Opnam sebelumnya 30-Apr-2025';
+	  }
+	  
+	  const bottomDividers = document.querySelectorAll('.bottom-divider');
+	  const actionLinks = document.querySelectorAll('.action-link');
+
+	  bottomDividers.forEach(div => {
+	    div.style.display = 'block';
+	  });
+
+	  actionLinks.forEach(link => {
+	    link.style.display = 'block';
+	  });
+	  
+	  scrollToBottom();
+      // Proses simpan bisa dilanjutkan di sini
+      //alert('Data berhasil disimpan ke DB!');
+
+    });
+		
+	function scrollToBottom() {
+	  window.scrollTo({
+	    top: document.body.scrollHeight,
+	    behavior: 'smooth'
+	  });
+	}
+			
+	function lihatSelengkapnya() {
+		// Redirect ke halaman tujuan
+		window.location.replace('pilih-data-stok-opnam.html');
+	}
+	
+    function reset() {
+      const statusEl_2 = document.getElementById('asalJenisDanPetugasStatus');
+
+	  statusEl_2.textContent = 'Belum dipilih';
+      statusEl_2.style.color = '#d0d0d0';
+      statusEl_2.style.fontWeight = '400';
+	  
+	  localStorage.removeItem('data_jns_dsb_op');
+	        
+    }
+	// Tambahan per tgl 28 Mei 2025
+  </script>
+
+</body>
+</html>
