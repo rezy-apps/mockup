@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lihat Daftar Timbangan #1</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f8f6;
+      color: #1f3b2c;
+      animation: fadeIn 0.8s ease-in;
+      padding-bottom: 32px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .top-bar {
+      background-color: #cedace;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      font-weight: 600;
+      color: #264d33;
+      cursor: pointer;
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* IE10+/Edge */
+      user-select: none;         /* Standard */
+      -webkit-touch-callout: none;
+    }
+
+    .top-bar svg {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      stroke: #264d33;
+    }
+
+    .section-title {
+		background-color: #7E00A1;
+      color: white;
+      font-weight: 600;
+      padding: 12px 16px;
+      font-size: 16px;
+    }
+
+    .subsection {
+		/*background-color: #7E00A1;*/
+		  background-color: #5F0079;
+      color: white;
+      padding: 8px 16px;
+      font-size: 13px;
+    }
+
+    .container {
+      padding: 32px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      align-items: center;
+      text-align: left;
+    }
+
+	.summary-section {
+	  display: flex;
+	  flex-direction: column;
+	  gap: 32px;
+	  width: 100%;
+	  /*padding: 16px;*/
+	}
+
+	.summary-title {
+	  font-size: 24px;
+	  font-weight: 900;
+	  color: #1f3b2c;
+	}
+	
+	.summary-item {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+	}
+	
+    .summary-item label {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+	.summary-item .value {
+	  /*font-size: 20px;*/
+	  font-size: 18px;
+	  font-weight: 600;
+	  /*color: #1f3b2c;*/
+	  /*margin-top: 6px;*/
+	}
+
+    .divider {
+      border-top: 1px solid #e0e0e0;
+      margin: 12px 0;
+      align-self: stretch;
+      width: 100%;
+    }
+
+    .bottom-divider {
+      border-top: 1px solid #e0e0e0;
+      margin: 12px 0 0;
+      align-self: stretch;
+      width: 100%;
+    }
+
+    .image-preview {
+      /*display: none;*/
+      margin-top: 4px;
+    }
+
+    .image-preview img {
+      max-width: 90%;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      display: block;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar" onclick="window.location.replace('pilih-daftar-timbangan.html')">
+    <svg fill="none" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+    Kembali
+  </div>
+
+  <div class="section-title">Lihat Daftar Timbangan #1</div>
+  <div class="subsection" id="dataSubsection">Depok</div>
+
+  <div class="container">
+	
+	<div class="summary-section">
+	  <div class="summary-item">
+	    <label>Total Timbangan</label>
+	    <div class="value" id="dataTT">2</div>
+	  </div>
+	  <div class="summary-item">
+	    <label>Total Berat</label>
+	    <div class="value" id="dataBrt">200 kg</div>
+	  </div>
+	  <div class="summary-item">
+	    <label>Total Barang</label>
+	    <div class="value" id="dataBrg">100</div>
+	  </div>
+	</div>
+    
+	<div class="bottom-divider"></div>
+    
+    <div class="image-preview" id="imagePreviewContainer">
+      <img id="previewImage" src="https://res.cloudinary.com/dlbkz8hbf/image/upload/v1748226556/1_3_opsilb.png" alt="Preview Foto"/>
+    </div>
+	
+	</div>
+    
+  </div>
+
+  <script>
+	  
+  	  function bersihkanStatus(statusStr) {
+  	    if (!statusStr || statusStr.includes('null')) return '';
+  	    return statusStr
+  	  	  .split(',')
+  	  	  .map(item => item.trim())
+  	  	  .filter(item => item !== 'Belum dipilih')
+  	  	  .join(', ') || '';
+  	  }
+	   
+	  //ambil data untuk isi data subsection
+	  const tanggal = localStorage.getItem('data_tgl_out_2');
+	  const asal = localStorage.getItem('data_asl_out_2');
+	  const jenis = localStorage.getItem('data_jns_out_2');
+	  const petugas = localStorage.getItem('data_ptgs_out_2');
+	  	  
+	  const dataSubsectionEl = document.getElementById('dataSubsection');
+
+	  // Buat array dari elemen-elemen yang ingin digabungkan
+	  const bagian = [
+	    'Depok',
+	    bersihkanStatus(tanggal),
+	    bersihkanStatus(asal),
+	    bersihkanStatus(jenis),
+	    bersihkanStatus(petugas)
+	  ];
+
+	  // Filter elemen kosong, lalu gabungkan dengan koma
+	  const hasil = bagian.filter(item => item && item !== '').join(', ');
+
+	  // Tampilkan hasil
+	  dataSubsectionEl.textContent = hasil;
+		
+  </script>
+  
+</body>
+</html>
